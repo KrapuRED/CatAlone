@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Basket.unity
     guid: 6f0143a1d0c7fb4458fb81875f2a4792
   - enabled: 1
-    path: Assets/Scenes/Neighbours Cat.unity
+    path: Assets/Scenes/Neighbour Cat.unity
     guid: fff8722830a875544aa54fe532d013fb
   - enabled: 1
     path: Assets/Scenes/Mouse.unity

@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class ManagerTyping : MonoBehaviour
 {
     public static ManagerTyping instance;
 
     public List<ObjectTyper> allObjects = new List<ObjectTyper>();
-    [SerializeField] private string currentLetter = "";
+    [SerializeField] private string typingLetter = "";
     [SerializeField] private ObjectTyper lockTarget;
 
     private void Awake()
@@ -19,9 +20,19 @@ public class ManagerTyping : MonoBehaviour
 
     public void EnterTypeLetter(string typedLetter)
     {
-        currentLetter += typedLetter;
-        Debug.Log("Letter : " + currentLetter);
+        typingLetter += typedLetter;
+        //Debug.Log("Letter : " + typingLetter);
 
+        //check if the minigame is playing
+        if (LevelManager.instance.CheckHomeScene())
+            CheckObjectTypeLetter();
+        else
+            CheckMiniGame(typingLetter);
+    }
+
+    #region Home Scene Typing
+    private void CheckObjectTypeLetter()
+    {
         if (lockTarget != null)
         {
             CheckLockTarget();
@@ -30,15 +41,15 @@ public class ManagerTyping : MonoBehaviour
 
         List<ObjectTyper> matches = new List<ObjectTyper>();
 
-        foreach (var obj  in allObjects)
+        foreach (var obj in allObjects)
         {
-            if (obj.word.StartsWith(currentLetter))
+            if (obj.word.StartsWith(typingLetter))
                 matches.Add(obj);
         }
 
         if (matches.Count == 0)
         {
-            ResetTyping(); 
+            ResetTyping();
             return;
         }
 
@@ -50,23 +61,31 @@ public class ManagerTyping : MonoBehaviour
 
     private void CheckLockTarget()
     {
-        if (currentLetter.Length > lockTarget.word.Length || !lockTarget.word.StartsWith(currentLetter))
+        if (typingLetter.Length > lockTarget.word.Length || !lockTarget.word.StartsWith(typingLetter))
         {
             ResetTyping();
             return;
         }
 
-        if (lockTarget.word == currentLetter)
+        if (lockTarget.word == typingLetter)
         {
             lockTarget.OnWordCompleted();
 
             ResetTyping();
         }
     }
+    #endregion
 
-    private void ResetTyping()
+    #region Neigbour Cat Typing
+    private void CheckMiniGame(string typeLetter)
     {
-        currentLetter = "";
+        MiniGameManager.instance.CheckTyping(typeLetter);
+    }
+    #endregion
+
+    public void ResetTyping()
+    {
+        typingLetter = "";
         lockTarget = null;
     }
 }
