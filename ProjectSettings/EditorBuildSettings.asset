@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/HomeScene.unity
+    guid: b3a40882655f1b346a38a11a8dbf065e
+  - enabled: 1
+    path: Assets/Scenes/Basket.unity
+    guid: 6f0143a1d0c7fb4458fb81875f2a4792
+  - enabled: 1
+    path: Assets/Scenes/Neighbours Cat.unity
+    guid: fff8722830a875544aa54fe532d013fb
+  - enabled: 1
+    path: Assets/Scenes/Mouse.unity
+    guid: 94ac80b9c7af83a4aaba2d6fb730d7be
+  - enabled: 1
+    path: Assets/Scenes/Feeder Food.unity
+    guid: 7f58bc8370edcd046948a82b65a214da
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
