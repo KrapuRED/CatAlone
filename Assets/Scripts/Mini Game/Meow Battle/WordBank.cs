@@ -47,7 +47,7 @@ public class WordBank : MonoBehaviour
         }
     }
 
-    public string GetWord()
+    public string GetWordPlayer()
     {
         if (workingWords.Count == 0)
         {
@@ -58,5 +58,12 @@ public class WordBank : MonoBehaviour
         workingWords.RemoveAt(workingWords.Count - 1);
 
         return newWord.catSound;
+    }
+
+    public string GetWordNeighbour()
+    {
+        int random = Random.Range(0, originalWords.Count);
+
+        return originalWords[random].catSound;
     }
 }

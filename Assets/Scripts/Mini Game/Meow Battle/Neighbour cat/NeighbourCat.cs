@@ -4,34 +4,61 @@ using UnityEngine;
 public class NeighbourCat : MonoBehaviour
 {
     [SerializeField] private float _timerMeow;
+    [SerializeField] private bool _isWaiting;
+
+    [Header("Word Bank")]
+    [SerializeField] private WordBank _wordBank;
+    [SerializeField] private string _currentWord;
+
+    [Header("UI")]
+    [SerializeField] private TextAreaNeighbourCatUI textAreaNeighbourCatUI;
 
     [Header("Events")]
     [SerializeField] private StartBattleEventSO _startBattleEvent;
     [SerializeField] private EndBattleEventSO _endBattleEvent;
 
-    private Coroutine _meowRoutine;
+    [SerializeField] private Coroutine _meowRoutine;
+    
     private void StartToWaiting()
     {
-        if (_meowRoutine == null)
-        {
-            _meowRoutine = StartCoroutine(WaitingToMeow());
-        }
+        if (_meowRoutine != null)
+            return;
+
+        _isWaiting = true;
+        _meowRoutine = StartCoroutine(WaitingToMeow());
     }
 
     private IEnumerator WaitingToMeow()
     {
-        while (true)
+        while (_isWaiting)
         {
-            Debug.Log("Neighbour Cat is waiting to meowing");
             yield return new WaitForSeconds(_timerMeow);
-            Debug.Log("Neighbour Cat win the meow! next :D");
-            MeowBattleManager.instance.NeighbourCatMeowing();
+
+            if (!_isWaiting)
+                break;
+
+            DoMeow();
+
             yield return new WaitForSeconds(1);
         }
+
+        _meowRoutine = null;
+    }
+
+    private void DoMeow()
+    {
+        _currentWord = _wordBank.GetWordNeighbour();
+
+        Debug.Log("Neighbour Cat : " + _currentWord);
+
+        textAreaNeighbourCatUI.SetMeowText(_currentWord);
+        MeowBattleManager.instance.NeighbourCatMeowing();
     }
 
     private void StopWaiting()
     {
+        _isWaiting = false;
+
         if (_meowRoutine != null)
         {
             StopCoroutine(_meowRoutine);
@@ -49,6 +76,5 @@ public class NeighbourCat : MonoBehaviour
     {
         _startBattleEvent.Unregister(StartToWaiting);
         _endBattleEvent.Unregister(StopWaiting);
-        StopWaiting();
     }
 }

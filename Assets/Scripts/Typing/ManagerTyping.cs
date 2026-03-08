@@ -23,10 +23,10 @@ public class ManagerTyping : MonoBehaviour
         typingLetter += typedLetter;
         //Debug.Log("Letter : " + typingLetter);
 
+        CheckObjectTypeLetter();
+
         //check if the minigame is playing
-        if (LevelManager.instance.CheckHomeScene())
-            CheckObjectTypeLetter();
-        else
+        if (!LevelManager.instance.CheckHomeScene())
             CheckMiniGame(typingLetter);
     }
 
@@ -38,6 +38,9 @@ public class ManagerTyping : MonoBehaviour
             CheckLockTarget();
             return;
         }
+
+        if (allObjects.Count == 0)
+            return;
 
         List<ObjectTyper> matches = new List<ObjectTyper>();
 
