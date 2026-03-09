@@ -49,7 +49,7 @@ public class NeighbourCat : MonoBehaviour
     {
         _currentWord = _wordBank.GetWordNeighbour();
 
-        Debug.Log("Neighbour Cat : " + _currentWord);
+        //Debug.Log("Neighbour Cat : " + _currentWord);
 
         textAreaNeighbourCatUI.SetMeowText(_currentWord);
         MeowBattleManager.instance.NeighbourCatMeowing();

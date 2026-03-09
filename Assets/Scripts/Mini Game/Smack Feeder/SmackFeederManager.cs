@@ -9,13 +9,14 @@ public class SmackFeederManager : MiniGame
 
     [Header("Smack Feeder Config")]
     [SerializeField] private float _spawnRateTap;
-    [SerializeField] private float lengthMiniGame;
+    [SerializeField] private float _lengthMiniGame;
     [SerializeField] private int _maxMissClick;
     [SerializeField] private int _missClick;
     [SerializeField] private List<TapKey> _tapKeys = new List<TapKey>();
 
     [Header("Timing Config")]
     [SerializeField] private float _currentTiming;
+    [SerializeField] private float _currentLengthMiniGame;
 
     [Header("Helper")]
     [SerializeField] private TapKeyWord _tapKeyWord;
@@ -36,15 +37,38 @@ public class SmackFeederManager : MiniGame
     private void Start()
     {
         SetCurrentKeyWord();
+        _currentLengthMiniGame = _lengthMiniGame;
     }
 
     private void Update()
     {
         _currentTiming += Time.deltaTime;
+        _currentLengthMiniGame -= Time.deltaTime;
+
+        if (_missClick >= _maxMissClick)
+        {
+            EndGame();
+            return;
+        }
+
+        if (_currentLengthMiniGame <= 0)
+        {
+            EndGame();
+        }
     }
+
+    private GameResult FindWinner()
+    {
+        if (_missClick >= _maxMissClick)
+            return GameResult.Win;
+        return GameResult.Loose;
+    } 
 
     public override void CheckEnterLetter(string typingLetter)
     {
+        if (_currentLengthMiniGame < 0)
+            return;
+
         TapKey currentKey = _tapKeys.First();
         if (!currentKey.IsCorrectKey(typingLetter.ToUpper()))
             return;
@@ -75,14 +99,30 @@ public class SmackFeederManager : MiniGame
         SetCurrentKeyWord();
     }
 
+    private void EndGame()
+    {
+        StopAllCoroutines();
+        //Say to status win or lose
+        MiniGameManager.instance.EndMiniGame(type, FindWinner());
+        ManagerPanel.instance.OpenPanel("EndMiniGame");
+    }
+
     private void AssignTapKey(TapKey tapKey)
     {
         _tapKeys.Add(tapKey);
     }
 
+    private void MissRemoveTapKey(TapKey tapKey)
+    {
+        _missClick++;
+        _currentTiming = 0;
+        ManagerTyping.instance.ResetTyping();
+
+        _tapKeys.Remove(tapKey);
+    }
+
     private void RemoveTapKey(TapKey tapKey)
     {
-        //Reset
         _currentTiming = 0;
         ManagerTyping.instance.ResetTyping();
 
@@ -92,12 +132,12 @@ public class SmackFeederManager : MiniGame
     private void OnEnable()
     {
         _readyToTapEventSO.Register(AssignTapKey);
-        _removeTapKeyEventSO.Register(RemoveTapKey);
+        _removeTapKeyEventSO.Register(MissRemoveTapKey);
     }
 
     private void OnDisable()
     {
         _readyToTapEventSO.Unregister(AssignTapKey);
-        _removeTapKeyEventSO.Unregister(RemoveTapKey);
+        _removeTapKeyEventSO.Unregister(MissRemoveTapKey);
     }
 }

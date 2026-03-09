@@ -16,6 +16,7 @@ public class MeowBattleManager : MiniGame
     [SerializeField] private string _currentWord = "";
     //remeaning meow
     [SerializeField] private string _remainingWord = string.Empty;
+    [SerializeField] private int _charIndex;
 
     [Header("UI")]
     [SerializeField] private WordTypingUI _wordTypingUI;
@@ -25,7 +26,7 @@ public class MeowBattleManager : MiniGame
     [SerializeField] private StartBattleEventSO _startBattleEventSO;
     [SerializeField] private EndBattleEventSO _endBattleEventSO;
 
-    private bool _isBattleDone;
+    [SerializeField] private bool _isBattleOnGoing;
 
     private void Awake()
     {
@@ -39,55 +40,72 @@ public class MeowBattleManager : MiniGame
     {
         SetCurrentWord();
         CheckScore();
-        _isBattleDone = true;
+        _isBattleOnGoing = true;
     }
 
     public override void CheckEnterLetter(string typingLetter)
     {
-      /*Debug.Log("[MeowBattleManager] Letter : " + typingLetter);
-        Debug.Log(IsCorrectLetter(typingLetter));*/
-        if (IsCorrectLetter(typingLetter))
+        Debug.Log("[MeowBattleManager] Letter : " + typingLetter);
+        bool isCorrectLetter = IsCorrectLetter(typingLetter);
+        Debug.Log(isCorrectLetter);
+        if (_isBattleOnGoing)
         {
-            RemoveLetter();
-
-            if (IsWordCompleted())
+            if (isCorrectLetter)
             {
-                OnWordCompleted();
+                RemoveLetter();
+
+                if (IsWordCompleted())
+                {
+                    OnWordCompleted();
+                }
             }
-        }
-        else
-        {
-            ResetTyping();
-        }
+            else
+            {
+                ResetTyping();
+            }
+        }  
     }
 
     private void SetCurrentWord()
     {
         _currentWord = _wordBank.GetWordPlayer();
+        _charIndex = 0;
         SetRemainingWord(_currentWord);
         _startBattleEventSO.OnRaiseEvent();
     }
 
-    private bool IsCorrectLetter(string letters)
+    private bool IsCorrectLetter(string letter)
     {
-        //Debug.Log($"Check Letter : {letters}");
-        return _currentWord.StartsWith(letters);
+        //Debug.Log($"Check Letter : {letter}");
+        if (_charIndex >= _currentWord.Length)
+            return false;
+
+        if (_currentWord[_charIndex].ToString() == letter)
+        {
+            _charIndex++;
+            return true;
+        }
+            
+        return false;
     }
 
     private void SetRemainingWord(string newString)
     {
-        if (_remainingWord == null)
+        if (_wordTypingUI == null)
         {
             Debug.LogWarning("Word Typing UI is MISSING!");
             return;
         }
+
         _remainingWord = newString;
         _wordTypingUI.SetWordtyping(_remainingWord);
     }
 
     private void RemoveLetter()
     {
+        Debug.Log("RemoveLetter");
         string newString = _remainingWord.Remove(0, 1);
+        ManagerTyping.instance.ResetTyping();
         SetRemainingWord(newString);
     }
 
@@ -118,39 +136,30 @@ public class MeowBattleManager : MiniGame
         _controllerStatusMeowBarUI.CalculateMeowBar(_playerCatScore, _neighbourCatScore);
 
         //Check Score for win conditiion
-        if (_playerCatScore <= 5 || _neighbourCatScore <= 5 && _isBattleDone)
+        if (_playerCatScore <= 5 || _neighbourCatScore <= 5 && _isBattleOnGoing)
         {
-            string winner = FindWinner();
-            string panel = string.Empty;
+            GameResult result = FindWinner();
+            
+            _isBattleOnGoing = false;
 
-            Debug.Log(winner);
-            if (winner != null && winner == "player")
-                panel = "winning";
-            else
-                panel = "lose";
-
-            _isBattleDone = false;
-
-            ManagerPanel.instance.OpenPanel(panel);
+            MiniGameManager.instance.EndMiniGame(type, result);
+            ManagerPanel.instance.OpenPanel("EndMiniGame");
             _endBattleEventSO.OnRaiseEvent();
         }
     }
 
-    private string FindWinner()
+    private GameResult FindWinner()
     {
         if (_playerCatScore <= 0)
-            return "neighbour";
-        
-        if (_neighbourCatScore <= 0)
-            return "player";
+            return GameResult.Loose;
 
-        return "";
+        return GameResult.Loose;
     }
 
     private void ResetTyping()
     {
         SetRemainingWord(_currentWord);
-
+        _charIndex = 0;
         ManagerTyping.instance.ResetTyping();
     }
 }

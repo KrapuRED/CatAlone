@@ -20,6 +20,8 @@ public class ObjectTyper : MonoBehaviour
         wordTextUI.text = wordLetter;
     }
 
+
+
     public void OnWordCompleted()
     {
         Debug.Log($"{ObjectTyperData.wordLetter} is complete!");

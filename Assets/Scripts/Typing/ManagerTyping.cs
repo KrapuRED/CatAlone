@@ -21,7 +21,7 @@ public class ManagerTyping : MonoBehaviour
     public void EnterTypeLetter(string typedLetter)
     {
         typingLetter += typedLetter;
-        //Debug.Log("Letter : " + typingLetter);
+        Debug.Log("Letter : " + typingLetter);
 
         CheckObjectTypeLetter();
 
@@ -52,7 +52,7 @@ public class ManagerTyping : MonoBehaviour
 
         if (matches.Count == 0)
         {
-            ResetTyping();
+            //ResetTyping();
             return;
         }
 
