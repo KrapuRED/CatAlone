@@ -15,14 +15,20 @@ public class StateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckEntry();
+    }
+
+    public void CheckEntry()
+    {
         for (int i = 0; i < stateEntrys.Count; i++)
         {
             StateEntry entry = stateEntrys[i];
+            //Debug.Log($"[Checking] {entry.condition}");
             if (entry.condition.CheckCondition())
             {
                 entry.state.enabled = true;
             }
-            else 
+            else
                 entry.state.enabled = false;
         }
     }

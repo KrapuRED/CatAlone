@@ -4,11 +4,6 @@ public class RestingState : State
 {
    [SerializeField] private MouseMovement _mouseMovement;
 
-    private void Start()
-    {
-        _mouseMovement = GetComponent<MouseMovement>();
-    }
-
     private void OnEnable()
     {
         StartCoroutine(_mouseMovement.RestRoaming());

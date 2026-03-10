@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MouseMovement : MonoBehaviour
 {
-    [SerializeField] private Mouse mouse;
+    [SerializeField] private Mouse _currentMouse;
 
     [Header("WayPoint")]
     [SerializeField] protected Transform StartWayPoint;
@@ -32,6 +32,8 @@ public class MouseMovement : MonoBehaviour
         if (distance < 0.1f)
         {
             //stop
+            //Destroy(gameObject);
+            OnStopMovement();
             return;
         }
 
@@ -56,7 +58,13 @@ public class MouseMovement : MonoBehaviour
         }
 
         _isResting = true;
-        yield return new WaitForSeconds(4f);
+
+        _currentMouse.OpenWindowCatch();
+
+        yield return new WaitForSeconds(_currentMouse.catchTime);
+
+        _currentMouse.CloseWindowCatch();
+        _currentMouse.ResetMouse();
         _isResting = false;
     }
 
@@ -77,5 +85,6 @@ public class MouseMovement : MonoBehaviour
                 waypoint.position,
                 movementSpeed * Time.deltaTime
             ));
+        _currentMouse.MoveToTarget(transform.position);
     }
 }

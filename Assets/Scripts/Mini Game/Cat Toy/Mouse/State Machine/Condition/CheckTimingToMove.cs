@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class CheckTimingToMove : Condition
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Mouse _currentMouse;
+    [SerializeField] private float timeToMove;
 
-    // Update is called once per frame
-    void Update()
+    public override bool CheckCondition()
     {
-        
+        if (_currentMouse.currentTime <= timeToMove)
+        {
+            return true;
+        }
+        return false;
     }
 }

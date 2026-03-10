@@ -6,8 +6,13 @@ public class Mouse : MonoBehaviour
     [SerializeField] private float _currentTime;
     [SerializeField] private float _catchTime;
 
+    [Header("Word")]
+    [SerializeField] private MouseWord _mouseWord;
     [SerializeField] protected MouseMovement _mouseMovement;
+    [SerializeField] private bool _mouseCatch;
 
+    [Header("Events")]
+    [SerializeField] private ActiveMouseWordEventSO _activeMouseWordEventSO;
 
     public MouseMovement MouseMovement => _mouseMovement;
     public float currentTime => _currentTime;
@@ -15,21 +20,40 @@ public class Mouse : MonoBehaviour
 
     private bool _isOnRight;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        _currentTime += Time.deltaTime;
-        _mouseMovement.OnRoaming();
+        _activeMouseWordEventSO.OnRiase(_mouseWord);
     }
 
-    public bool IsCanCatchMouse()
+    public void UpdateTime()
     {
-        return false;
+        _currentTime += Time.deltaTime;
+    }
+
+    public void MoveToTarget(Vector3 targetWayPoint)
+    {
+        transform.position = targetWayPoint;
+    }
+
+    public void OpenWindowCatch()
+    {
+        if (!_mouseCatch)
+        {
+            Debug.Log("[Opening Mouse to Get Catch]");
+            _mouseWord.SetCurrentWord();
+            _mouseWord.ShowWord();
+        }
+    }
+
+    public void CloseWindowCatch()
+    {
+        Debug.Log("[Closing Mouse to Get Catch]");
+        _mouseWord.HideWord();
     }
 
     public void MouseGetCatch()
     {
-
+        _mouseCatch = true;
     }
 
     public bool IsOnRight()
@@ -44,5 +68,10 @@ public class Mouse : MonoBehaviour
 
         Debug.Log("Mouse on the right = " + _isOnRight);
         return _isOnRight;
+    }
+
+    public void ResetMouse()
+    {
+        _currentTime = 0;
     }
 }
