@@ -43,6 +43,7 @@ public class MiniGameManager : MonoBehaviour
         else
             StatusManager.instance.ChangeStatusPoint(miniGameType, _gainLoose);
 
+        ManagerPanel.instance.OpenPanel("EndMiniGame");
         _isMiniGameEnd = true;
     }
 }

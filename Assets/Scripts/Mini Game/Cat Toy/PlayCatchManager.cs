@@ -17,7 +17,7 @@ public class PlayCatchManager : MiniGame
 
     [Header("Events")]
     [SerializeField] private ActiveMouseWordEventSO _activeMouseWordEventSO;
-
+    [SerializeField] private MovePawsToMouseEventSO _movePawsToMouseEventSO;
     private void Awake()
     {
         if (instance == null)
@@ -90,6 +90,7 @@ public class PlayCatchManager : MiniGame
                 _isMouseCatch = true;
                 _mouseCatch = _lockMouseWord.GetMouse();
                 _mouseCatch.MouseGetCatch();
+                _movePawsToMouseEventSO.OnRaise(_mouseCatch.transform);
                 Debug.Log("Catch The Mouse!");
             }
         }

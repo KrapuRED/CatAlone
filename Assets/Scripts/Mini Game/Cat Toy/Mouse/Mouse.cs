@@ -18,8 +18,6 @@ public class Mouse : MonoBehaviour
     public float currentTime => _currentTime;
     public float catchTime => _catchTime;
 
-    private bool _isOnRight;
-
     private void Start()
     {
         _activeMouseWordEventSO.OnRiase(_mouseWord);
@@ -27,7 +25,8 @@ public class Mouse : MonoBehaviour
 
     public void UpdateTime()
     {
-        _currentTime += Time.deltaTime;
+        if (!_mouseCatch)
+            _currentTime += Time.deltaTime;
     }
 
     public void MoveToTarget(Vector3 targetWayPoint)
@@ -54,20 +53,6 @@ public class Mouse : MonoBehaviour
     public void MouseGetCatch()
     {
         _mouseCatch = true;
-    }
-
-    public bool IsOnRight()
-    {
-        if (transform.position.x > 0)
-        {
-            _isOnRight = true;
-
-        }
-        else
-            _isOnRight = false;
-
-        Debug.Log("Mouse on the right = " + _isOnRight);
-        return _isOnRight;
     }
 
     public void ResetMouse()

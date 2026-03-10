@@ -143,7 +143,6 @@ public class MeowBattleManager : MiniGame
             _isBattleOnGoing = false;
 
             MiniGameManager.instance.EndMiniGame(type, result);
-            ManagerPanel.instance.OpenPanel("EndMiniGame");
             _endBattleEventSO.OnRaiseEvent();
         }
     }
