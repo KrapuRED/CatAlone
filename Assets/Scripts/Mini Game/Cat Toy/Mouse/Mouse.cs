@@ -6,12 +6,20 @@ public class Mouse : MonoBehaviour
     [SerializeField] private float _currentTime;
     [SerializeField] private float _catchTime;
 
+    [SerializeField] protected MouseMovement _mouseMovement;
+
+
+    public MouseMovement MouseMovement => _mouseMovement;
+    public float currentTime => _currentTime;
+    public float catchTime => _catchTime;
+
     private bool _isOnRight;
 
     // Update is called once per frame
     void Update()
     {
-        
+        _currentTime += Time.deltaTime;
+        _mouseMovement.OnRoaming();
     }
 
     public bool IsCanCatchMouse()

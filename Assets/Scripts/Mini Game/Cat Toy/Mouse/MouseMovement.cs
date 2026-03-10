@@ -1,24 +1,24 @@
+using System.Collections;
 using UnityEngine;
 
-public class MouseMovement : Mouse
+public class MouseMovement : MonoBehaviour
 {
+    [SerializeField] private Mouse mouse;
+
     [Header("WayPoint")]
     [SerializeField] protected Transform StartWayPoint;
     [SerializeField] protected Transform EndWayPoint;
 
     [SerializeField] private float movementSpeed;
 
-    private bool _isResting;
+    [SerializeField] private bool _isResting;
     private Rigidbody2D rb2d;
+
+    public bool isResting => _isResting;
 
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-    }
-
-    private void FixedUpdate()
-    {
-        MoveToTarget(EndWayPoint);
     }
 
     public void MoveToTarget(Transform waypointTarget)
@@ -36,6 +36,28 @@ public class MouseMovement : Mouse
         }
 
         OnWalking(waypointTarget);
+    }
+
+    public void OnRoaming()
+    {
+        MoveToTarget(EndWayPoint);
+    }
+
+    public void OnStopMovement()
+    {
+        rb2d.linearVelocity = Vector2.zero;
+    }
+
+    public IEnumerator RestRoaming()
+    {
+        if (_isResting)
+        {
+            yield break;
+        }
+
+        _isResting = true;
+        yield return new WaitForSeconds(4f);
+        _isResting = false;
     }
 
     private void RotateToTarget(Transform waypoint)
