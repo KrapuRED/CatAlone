@@ -152,7 +152,7 @@ public class MeowBattleManager : MiniGame
         if (_playerCatScore <= 0)
             return GameResult.Loose;
 
-        return GameResult.Loose;
+        return GameResult.Win;
     }
 
     private void ResetTyping()

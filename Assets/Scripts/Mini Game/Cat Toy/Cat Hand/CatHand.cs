@@ -2,34 +2,26 @@ using UnityEngine;
 
 public class CatHand : MonoBehaviour
 {
-    [SerializeField] private bool _isOnRight;
-
     [Header("Events")]
     [SerializeField] private MovePawsToMouseEventSO _movePawsToMpuse;
 
     private void ShowPanel()
     {
+        Debug.Log($"{gameObject.name} position: {transform.position.x}");
         Debug.Log("[CatHand - ShowPanel] paws and mouse are in right : " + IsOnRight());
+        HoldMouseManager.instance.StartPhase(IsOnRight());
     }
 
     private bool IsOnRight()
     {
-        if (transform.position.x > 0)
-        {
-            _isOnRight = true;
-
-        }
-        else
-            _isOnRight = false;
-
-        return _isOnRight;
+        return transform.position.x > 0;
     }
 
     private void MovePawToMouse(Transform mousePosition)
     {
         Debug.Log("[CatHand - MovePawToMouse] Moving toward Mouse");
-        ShowPanel();
         transform.position = mousePosition.position;
+        ShowPanel();
     }
 
     private void OnEnable()
