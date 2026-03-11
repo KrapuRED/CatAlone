@@ -15,6 +15,7 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] private float _gainWin;
     [SerializeField] private float _gainLoose;
     [SerializeField] private bool _isMiniGameEnd;
+    [SerializeField] private CheckLetterEventSO checkLetterEvent;
 
     private void Awake()
     {
@@ -45,5 +46,15 @@ public class MiniGameManager : MonoBehaviour
 
         ManagerPanel.instance.OpenPanel("EndMiniGame");
         _isMiniGameEnd = true;
+    }
+
+    private void OnEnable()
+    {
+        checkLetterEvent.Register(CheckTyping);
+    }
+
+    private void OnDisable()
+    {
+        checkLetterEvent.Unregister(CheckTyping);
     }
 }

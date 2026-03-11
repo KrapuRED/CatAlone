@@ -453,8 +453,9 @@ MonoBehaviour:
   - {fileID: 316799745}
   - {fileID: 717713883}
   - {fileID: 59927268}
-  currentLetter: 
+  typingLetter: 
   lockTarget: {fileID: 0}
+  checkLetterEvent: {fileID: 11400000, guid: f0008d67ae4de684f8f3050634923607, type: 2}
 --- !u!224 &471596800 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5061709491117424969, guid: 0b8978e077bb5a44c8273606bdcf34a1, type: 3}

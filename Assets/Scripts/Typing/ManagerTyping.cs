@@ -10,6 +10,8 @@ public class ManagerTyping : MonoBehaviour
     [SerializeField] private string typingLetter = "";
     [SerializeField] private ObjectTyper lockTarget;
 
+    [SerializeField] private CheckLetterEventSO checkLetterEvent;
+
     private void Awake()
     {
         if (instance == null)
@@ -82,7 +84,7 @@ public class ManagerTyping : MonoBehaviour
     #region Neigbour Cat Typing
     private void CheckMiniGame(string typeLetter)
     {
-        MiniGameManager.instance.CheckTyping(typeLetter);
+        checkLetterEvent.OnRiasee(typeLetter);
     }
     #endregion
 

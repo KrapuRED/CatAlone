@@ -76,11 +76,11 @@ public class MouseMovement : MonoBehaviour
 
     private void RotateToTarget(Transform waypoint)
     {
-        Vector2 Direction = waypoint.position - transform.position;
+        Vector2 direction = waypoint.position - transform.position;
 
-        float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        rb2d.rotation = angle;
+        rb2d.rotation = angle - 90f;
     }
 
     private void OnWalking(Transform waypoint)

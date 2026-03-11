@@ -531,6 +531,7 @@ MonoBehaviour:
   _gainWin: 45
   _gainLoose: 20
   _isMiniGameEnd: 0
+  checkLetterEvent: {fileID: 11400000, guid: f0008d67ae4de684f8f3050634923607, type: 2}
 --- !u!1 &490094756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,6 +1442,7 @@ MonoBehaviour:
   - {fileID: 1248281054}
   typingLetter: 
   lockTarget: {fileID: 0}
+  checkLetterEvent: {fileID: 11400000, guid: f0008d67ae4de684f8f3050634923607, type: 2}
 --- !u!1 &1076928175
 GameObject:
   m_ObjectHideFlags: 0

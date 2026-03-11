@@ -118,54 +118,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1318024732858746418
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4548401423735809989}
-  - component: {fileID: 5994057403988721458}
-  m_Layer: 0
-  m_Name: Mouse Word- WordBank
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4548401423735809989
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318024732858746418}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8817627577454021227}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5994057403988721458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318024732858746418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23eb933ad31ccc84bb17c92a170225b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  originalWords:
-  - language: Test-1
-    catSound: Test
-  workingWords: []
 --- !u!1 &1559706260119946785
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +357,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4548401423735809989}
+  - {fileID: 8269151340820837357}
   - {fileID: 4245696539869569858}
   m_Father: {fileID: 6123608729327080423}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -421,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265af68d81601334c96b99a15beae867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wordBank: {fileID: 5994057403988721458}
+  _wordBank: {fileID: 6996883952084226845}
   _wordUI: {fileID: 4468320826411023188}
   _wordText: {fileID: 8015650611525060908}
   _currentWord: 
@@ -890,8 +842,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -8711998017206555673, guid: c04a1551f2ee6d744ab6dd69d5b9c415, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -945,3 +897,76 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1001 &2053369188898430024
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8817627577454021227}
+    m_Modifications:
+    - target: {fileID: 3261679392042083587, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+      propertyPath: m_Name
+      value: 'Mouse - WordBank '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980067587534352293, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980067587534352293, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980067587534352293, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980067587534352293, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980067587534352293, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980067587534352293, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980067587534352293, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980067587534352293, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980067587534352293, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980067587534352293, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+--- !u!114 &6996883952084226845 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9036160974253018965, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+  m_PrefabInstance: {fileID: 2053369188898430024}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23eb933ad31ccc84bb17c92a170225b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &8269151340820837357 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7980067587534352293, guid: 30692e1b262f62345be6b9bdb23daa10, type: 3}
+  m_PrefabInstance: {fileID: 2053369188898430024}
+  m_PrefabAsset: {fileID: 0}

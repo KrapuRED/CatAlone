@@ -48,7 +48,7 @@ public class MouseSpawnManager : MonoBehaviour
         WayPoint startPoint = waypoints[randomSpawnPos];
         WayPoint endPoint = GetEndWayPoint(randomSpawnPos);
 
-        if (startPoint == null && endPoint == null)
+        if (startPoint == null || endPoint == null)
         {
             Debug.LogWarning("[MouseSpawnManager - SpawnMouse] Missing Start and End Point are NULL!");
             return;
@@ -81,10 +81,10 @@ public class MouseSpawnManager : MonoBehaviour
             }
         }
 
-        if (possiblEndPoint.Count < 0)
+        if (possiblEndPoint.Count <= 0)
             return null;
 
         int randomIndex = Random.Range(0, possiblEndPoint.Count);
-        return waypoints[randomIndex];
+        return possiblEndPoint[randomIndex];
     } 
 }
