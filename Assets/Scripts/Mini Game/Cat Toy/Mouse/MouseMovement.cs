@@ -21,6 +21,12 @@ public class MouseMovement : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
+    public void SetUpWayPoints(Transform startPoint, Transform EndPoint)
+    {
+        StartWayPoint = startPoint;
+        EndWayPoint = EndPoint;
+    }
+
     public void MoveToTarget(Transform waypointTarget)
     {
         if (_isResting)
@@ -32,7 +38,7 @@ public class MouseMovement : MonoBehaviour
         if (distance < 0.1f)
         {
             //stop
-            //Destroy(gameObject);
+            _currentMouse.ReachEndPoint();
             OnStopMovement();
             return;
         }

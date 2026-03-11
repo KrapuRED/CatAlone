@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Mouse : MonoBehaviour
 {
+    [SerializeField] private Transform catchCheck;
+    [SerializeField] private float radiuseCatchChcek;
+    [SerializeField] private LayerMask catchLayer;
+
     [Header("Timing Config")]
     [SerializeField] private float _currentTime;
     [SerializeField] private float _catchTime;
@@ -36,12 +40,20 @@ public class Mouse : MonoBehaviour
 
     public void OpenWindowCatch()
     {
-        if (!_mouseCatch)
+        Debug.Log("[IsInCatchLayer] : " + IsInCatchLayer());
+
+        if (!_mouseCatch && IsInCatchLayer())
         {
             Debug.Log("[Opening Mouse to Get Catch]");
             _mouseWord.SetCurrentWord();
             _mouseWord.ShowWord();
         }
+    }
+
+    public void ReachEndPoint()
+    {
+        PlayCatchManager.instance.RemoveMouse(_mouseWord);
+        Destroy(gameObject);
     }
 
     public void CloseWindowCatch()
@@ -58,5 +70,10 @@ public class Mouse : MonoBehaviour
     public void ResetMouse()
     {
         _currentTime = 0;
+    }
+
+    public bool IsInCatchLayer()
+    {
+        return Physics2D.OverlapCircle(catchCheck.position, radiuseCatchChcek, catchLayer);
     }
 }

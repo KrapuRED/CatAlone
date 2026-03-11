@@ -7,8 +7,8 @@ public class CatHand : MonoBehaviour
 
     private void ShowPanel()
     {
-        Debug.Log($"{gameObject.name} position: {transform.position.x}");
-        Debug.Log("[CatHand - ShowPanel] paws and mouse are in right : " + IsOnRight());
+        /*Debug.Log($"{gameObject.name} position: {transform.position.x}");
+        Debug.Log("[CatHand - ShowPanel] paws and mouse are in right : " + IsOnRight());*/
         HoldMouseManager.instance.StartPhase(IsOnRight());
     }
 
@@ -19,7 +19,7 @@ public class CatHand : MonoBehaviour
 
     private void MovePawToMouse(Transform mousePosition)
     {
-        Debug.Log("[CatHand - MovePawToMouse] Moving toward Mouse");
+        //Debug.Log("[CatHand - MovePawToMouse] Moving toward Mouse");
         transform.position = mousePosition.position;
         ShowPanel();
     }

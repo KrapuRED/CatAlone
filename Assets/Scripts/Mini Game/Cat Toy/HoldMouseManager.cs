@@ -6,14 +6,20 @@ public class HoldMouseManager : MiniGame
     public static HoldMouseManager instance;
 
     [Header("Hold Mouse Config")]
-    [SerializeField] private float _highesRangeOutside;
-    [SerializeField] private float _lowesRangeOutside;
+    [SerializeField] private float _gripZoneSize;
+    [SerializeField] private float _maxGrip;
+    [SerializeField] private float _minGrip;
     [SerializeField] private float _currentPositionStatus;
+    [SerializeField] private float _currentLosePositionTime;
+    [SerializeField] private float _releaseGripTimer;
 
-    [Header("Progress Config")]
-    [SerializeField] private float _completedProgress;
-    [SerializeField] private float _gainProgressen;
-    [SerializeField] private float _currentProgress;
+    [Header("IsCanProgress Config")]
+    [SerializeField] private int _completedProgress;
+    [SerializeField] private int _gainProgressen;
+    [SerializeField] private int _currentProgress;
+    [SerializeField] private float _delayTime;
+    [SerializeField] private float _currentGainTime;
+    [SerializeField] private float _currentLoseProgressTime;
 
     [Header("Word")]
     [SerializeField] private WordBank _wordBank;
@@ -23,8 +29,9 @@ public class HoldMouseManager : MiniGame
 
     [Header("UI")]
     [SerializeField] private HoldBarControllerUI _controller;
-
+    [SerializeField] private UpdateGripTextEventSO _updateGripTextEventSO;
     [SerializeField] private bool _isPhase2Active;
+
 
     private void Awake()
     {
@@ -36,28 +43,89 @@ public class HoldMouseManager : MiniGame
 
     private void Update()
     {
-        
+        if (!_isPhase2Active)
+            return;
+
+        if (IsCanProgress())
+        {
+            _currentGainTime += Time.deltaTime;
+
+            if (_currentGainTime >= _delayTime)
+            {
+                if (_currentProgress >= _completedProgress)
+                {
+                    EndMiniGame();
+                    return;
+                }
+
+                _currentProgress += _gainProgressen;
+
+                _controller.UpdaetProgressBar(_currentProgress);
+                _currentGainTime = 0;
+            }
+        }
+        ReducePosition();
+        ReduceProgress();
+    }
+
+    private void ReducePosition()
+    {
+        _currentLosePositionTime += Time.deltaTime;
+        if (_currentLosePositionTime >= _delayTime)
+        {
+            if (_currentPositionStatus > 0)
+            {
+                _currentPositionStatus--;
+                _currentLosePositionTime = 0;
+                _controller.UpdateGribBar(_currentPositionStatus);
+            }
+        }
+    }
+
+    private void ReduceProgress()
+    {
+        _currentLoseProgressTime += Time.deltaTime;
+
+        if (_currentLoseProgressTime >= _delayTime)
+        {
+            if (_currentProgress > 0)
+            {
+                _currentProgress--;
+                _currentLoseProgressTime = 0;
+                _controller.UpdaetProgressBar(_currentProgress);
+            }
+
+            if (_currentLoseProgressTime >= _releaseGripTimer)
+                EndMiniGame();
+        }
     }
 
     public void StartPhase(bool isRight)
     {
         _isPhase2Active = true;
-        _controller.ShowBar(isRight);
+
+        GenerateGripZone();
+
+        float randomGrib = Random.Range(_minGrip/100, _maxGrip / 100);
+        _controller.ShowBar(isRight, randomGrib);
         SetCurrentWord();
     }
 
     public override void CheckEnterLetter(string typingLetter)
     {
-        if (IsCorrectLetter(typingLetter) && _isPhase2Active)
+        if (_isPhase2Active)
         {
-            _charIndex++;
-            RemoveLetter();
+            Debug.Log("[HoldMouseManager - CheckEnterLetter] Is Correct Letter : " + IsCorrectLetter(typingLetter));
+            if (IsCorrectLetter(typingLetter))
+            {
+                RemoveLetter();
 
-            if (IsWordCompleted())
-                OnWordCompleted();
+                if (IsWordCompleted())
+                    OnWordCompleted();
+            }
+            else
+                ResetWord();
         }
-        else
-            ResetWord();
 
     }
 
@@ -72,6 +140,7 @@ public class HoldMouseManager : MiniGame
     {
         _remainingWord = wordLetter;
         //UI
+        _updateGripTextEventSO.OnRaise(wordLetter);
     }
 
     private bool IsCorrectLetter(string letter)
@@ -91,17 +160,19 @@ public class HoldMouseManager : MiniGame
     {
         if (_isPhase2Active)
         {
-            Progress();
+            _currentPositionStatus += 10;
+            _controller.UpdateGribBar(_currentPositionStatus);
             SetCurrentWord();
         }
     }
 
-    private void Progress()
+    private bool IsCanProgress()
     {
-        if (_currentPositionStatus >= _lowesRangeOutside ||  _currentPositionStatus <= _highesRangeOutside)
+        if (_currentPositionStatus >= _minGrip && _currentPositionStatus <= _maxGrip)
         {
-            _currentProgress += _gainProgressen;
+            return true;
         }
+        return false;
     }
 
     private void RemoveLetter()
@@ -116,7 +187,22 @@ public class HoldMouseManager : MiniGame
         if (_currentProgress >= _completedProgress)
             return GameResult.Win;
 
+        if (_currentProgress <= 0)
+            return GameResult.Loose;
+
         return GameResult.Loose;
+    }
+
+    private void GenerateGripZone()
+    {
+        _minGrip = Random.Range(0f, 100f - _gripZoneSize);
+        _maxGrip = _minGrip + _gripZoneSize;
+
+    }
+
+    private void EndMiniGame()
+    {
+        MiniGameManager.instance.EndMiniGame(type, FindWinner());
     }
 
     private void ResetWord()

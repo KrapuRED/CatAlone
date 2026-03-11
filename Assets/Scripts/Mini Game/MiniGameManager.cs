@@ -29,7 +29,7 @@ public class MiniGameManager : MonoBehaviour
     public void CheckTyping(string typeLetter)
     {
         //Debug.Log("[MiniGameManager] Letter : " + typeLetter);
-        if (miniGameActive != null)
+        if (miniGameActive != null && !_isMiniGameEnd)
             miniGameActive.CheckEnterLetter(typeLetter);
     }
 

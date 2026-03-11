@@ -6,6 +6,7 @@ public class PlayCatchManager : MiniGame
     public static PlayCatchManager instance;
 
     [Header("Play Catch Config")]
+    [SerializeField] private float _limitTimer;
     [SerializeField] private List<MouseWord> _activeMouseWords = new List<MouseWord>();
     [SerializeField] private string _currentWord = string.Empty;
     [SerializeField] private string _remainingWord = string.Empty;
@@ -14,6 +15,9 @@ public class PlayCatchManager : MiniGame
 
     [Header("Mouse Word")]
     [SerializeField] private MouseWord _lockMouseWord;
+
+    [Header("UI")]
+    [SerializeField] private TimerUI _timerUI;
 
     [Header("Events")]
     [SerializeField] private ActiveMouseWordEventSO _activeMouseWordEventSO;
@@ -26,9 +30,28 @@ public class PlayCatchManager : MiniGame
             Destroy(gameObject);
     }
 
+    private void Update()
+    {
+        if (!_isMouseCatch)
+        {
+            _limitTimer -= Time.deltaTime;
+            _timerUI.SetCurrentTimer(_limitTimer);
+        }
+
+        if (_limitTimer <= 0) 
+            MiniGameManager.instance.EndMiniGame(type, GameResult.Loose);
+    }
+
     public override void CheckEnterLetter(string typingLetter)
     {
         //Debug.Log("[PlayCatchManager - CheckEnterLetter] check letter : " + typingLetter);
+
+        if (_mouseCatch != null)
+        {
+            HoldMouseManager.instance.CheckEnterLetter(typingLetter);
+            return;
+        }
+
         if (_lockMouseWord != null)
         {
             CheckLockWord(typingLetter);
@@ -79,8 +102,6 @@ public class PlayCatchManager : MiniGame
     private void CheckLockWord(string letter)
     {
         bool isCorrectLetter = _lockMouseWord.IsCorrectLetter(letter);
-        /*Debug.Log("[PlayCatchManager - CheckLockWord] check letter : " + letter);
-        Debug.Log("[PlayCatchManager - CheckLockWord] check letter : " + isCorrectLetter);*/
         if (isCorrectLetter && !_isMouseCatch)
         {
             RemoveLetter();
@@ -91,7 +112,6 @@ public class PlayCatchManager : MiniGame
                 _mouseCatch = _lockMouseWord.GetMouse();
                 _mouseCatch.MouseGetCatch();
                 _movePawsToMouseEventSO.OnRaise(_mouseCatch.transform);
-                Debug.Log("Catch The Mouse!");
             }
         }
         else
@@ -102,7 +122,6 @@ public class PlayCatchManager : MiniGame
 
     private void RemoveLetter()
     {
-        Debug.Log("[PlayCatchManager - RemoveLetter] Remove Letter!");
         if (!IsWordCompleted())
         {
             string newString = _remainingWord.Remove(0, 1);
@@ -125,6 +144,11 @@ public class PlayCatchManager : MiniGame
     {
         _lockMouseWord = null;
         _remainingWord = _currentWord = string.Empty;
+    }
+
+    public void RemoveMouse(MouseWord mouse)
+    {
+        _activeMouseWords.Remove(mouse);
     }
 
     private void AssignToActiveMouseWords(MouseWord activeMouseWord)
