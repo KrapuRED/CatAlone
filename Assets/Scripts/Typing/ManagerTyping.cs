@@ -27,6 +27,9 @@ public class ManagerTyping : MonoBehaviour
 
         //check if the minigame is playing
         CheckMiniGame(typingLetter);
+        
+        if (TutorialManager.instance.activeTutorial > 0)
+            TutorialManager.instance.CheckEnterLetter(typingLetter);
 
         if (!GameManager.instance.isMiniGameActive && GameManager.instance.isTutorialDone)
             CheckObjectTypeLetter();
@@ -78,8 +81,6 @@ public class ManagerTyping : MonoBehaviour
 
         if (lockTarget.word == typingLetter)
         {
-            lockTarget.OnWordCompleted();
-
             ResetTyping();
         }
     }

@@ -50,7 +50,10 @@ public class MiniGameManager : MonoBehaviour
 
 
         GameManager.instance.SetIsMiniGameActive(false);
-        ManagerPanel.instance.OpenPanel("EndMiniGame");
+        
+        if (miniGameType != MiniGameType.None)
+            ManagerPanel.instance.OpenPanel("EndMiniGame");
+
         _isMiniGameEnd = true;
     }
 

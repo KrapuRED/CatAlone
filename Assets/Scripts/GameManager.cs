@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private bool _isMiniGameActive;
     [SerializeField] private bool _isTutorialDone;
+
+    [SerializeField] private UpdateTutorialEventSO updateTutorial;
+
     public bool isMiniGameActive => _isMiniGameActive;
     public bool isTutorialDone => _isTutorialDone;
 
@@ -25,8 +28,18 @@ public class GameManager : MonoBehaviour
         _isMiniGameActive = isActive;
     }
 
-    public void SetITutorialActive(bool isActive)
+    public void SetITutorialActive()
     {
-        _isMiniGameActive = isActive;
+        Debug.Log("[GameManager - SetITutorialActive]");
+        _isTutorialDone = true;
+    }
+
+    private void OnEnable()
+    {
+        updateTutorial.Register(SetITutorialActive);
+    }
+    private void OnDisable()
+    {
+        updateTutorial.Unregister(SetITutorialActive);
     }
 }

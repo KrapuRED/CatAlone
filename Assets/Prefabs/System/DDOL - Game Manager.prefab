@@ -45,3 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isMiniGameActive: 0
+  _isTutorialDone: 0
+  updateTutorial: {fileID: 11400000, guid: d67b66a1cfd9d0d4b96dd19f7bbd52a3, type: 2}

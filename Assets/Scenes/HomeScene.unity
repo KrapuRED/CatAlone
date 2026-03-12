@@ -2158,6 +2158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 880616411}
+  - component: {fileID: 880616412}
   m_Layer: 5
   m_Name: UI - Tutorial
   m_TagString: Untagged
@@ -2188,6 +2189,31 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &880616412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880616410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9a39677b0837649b0452c120d583ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneTutorials:
+  - tutorialName: Tutorial 1
+    tutorialData: {fileID: 1610589245}
+    tutprialGO: {fileID: 1610589243}
+  - tutorialName: Tutorial 2
+    tutorialData: {fileID: 1946351036}
+    tutprialGO: {fileID: 1946351034}
+  - tutorialName: Tutorial 3
+    tutorialData: {fileID: 1811384212}
+    tutprialGO: {fileID: 1811384210}
+  - tutorialName: Tutorial 4
+    tutorialData: {fileID: 1884819914}
+    tutprialGO: {fileID: 1884819912}
 --- !u!1 &960550515
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,8 +2244,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 370051339}
-  - {fileID: 1400207819}
-  - {fileID: 2015888946}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &974518036
@@ -3500,55 +3524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6d15924b73095a4fa6749b9a4fab55b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1400207818
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1400207819}
-  - component: {fileID: 1400207820}
-  m_Layer: 0
-  m_Name: Manager - MiniGame
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1400207819
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400207818}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 960550516}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1400207820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400207818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca95b92390b1c2242a8939d0223c3084, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miniGameActive: {fileID: 2015888947}
-  _gainWin: 0
-  _gainLoose: 0
-  _isMiniGameEnd: 0
-  checkLetterEvent: {fileID: 11400000, guid: f0008d67ae4de684f8f3050634923607, type: 2}
 --- !u!1 &1519052544
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,10 +3714,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e0c1a37f49f9f44ac97c1b138b243c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLetter: 
+  currentLetter: next
   remainingLetter: 
   _charIndex: 0
-  tutorialLetter: {fileID: 0}
+  tutorialLetter: {fileID: 1180273526}
 --- !u!1 &1610855533
 GameObject:
   m_ObjectHideFlags: 0
@@ -4270,10 +4245,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e0c1a37f49f9f44ac97c1b138b243c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLetter: 
+  currentLetter: okey
   remainingLetter: 
   _charIndex: 0
-  tutorialLetter: {fileID: 0}
+  tutorialLetter: {fileID: 630453267}
 --- !u!1 &1830939206
 GameObject:
   m_ObjectHideFlags: 0
@@ -4538,7 +4513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1884819913
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4674,7 +4649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1916337007
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4798,10 +4773,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e0c1a37f49f9f44ac97c1b138b243c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLetter: 
+  currentLetter: okey
   remainingLetter: 
   _charIndex: 0
-  tutorialLetter: {fileID: 0}
+  tutorialLetter: {fileID: 974518038}
 --- !u!1 &2015888945
 GameObject:
   m_ObjectHideFlags: 0
@@ -4813,7 +4788,7 @@ GameObject:
   - component: {fileID: 2015888946}
   - component: {fileID: 2015888947}
   m_Layer: 0
-  m_Name: Manager - Tutorial
+  m_Name: DDOL - Tutorial Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4827,12 +4802,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015888945}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 960550516}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2015888947
 MonoBehaviour:
@@ -4846,10 +4821,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a938f5d7e3898c498579bbe215f805f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  tutorials:
-  - {fileID: 1884819914}
+  tutorials: []
   _activeTutorial: {fileID: 0}
+  updateTutorial: {fileID: 11400000, guid: d67b66a1cfd9d0d4b96dd19f7bbd52a3, type: 2}
 --- !u!1 &2067561716
 GameObject:
   m_ObjectHideFlags: 0
@@ -5427,4 +5401,5 @@ SceneRoots:
   - {fileID: 615904183}
   - {fileID: 172817227}
   - {fileID: 1283301038502264432}
+  - {fileID: 2015888946}
   - {fileID: 1916337008}
