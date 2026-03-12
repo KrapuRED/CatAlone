@@ -10,6 +10,20 @@ public enum MiniGameType
     Sleep
 }
 
+[System.Serializable]
+public class MiniGameDuration
+{
+    public float Duration;
+    public int change;
+}
+
+[System.Serializable]
+public class SpawnRate
+{
+    public float spawnRate;
+    public int rate;
+}
+
 public class MiniGame : MonoBehaviour
 {
     public MiniGameType type;

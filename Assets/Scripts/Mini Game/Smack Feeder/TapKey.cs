@@ -50,6 +50,7 @@ public class TapKey : MonoBehaviour
         if (_currentTiming <= 0)
         {
             removeTapEvent.OnRaise(this);
+            AudioManager.instance.PlaySoundEffect("Miss");
             Destroy(gameObject);
         }
     }
@@ -72,7 +73,7 @@ public class TapKey : MonoBehaviour
                 return timingPhaseList[i].timingName;
             }
         }
-        return "MISS";
+        return "Miss";
     }
 
     public void OnCorrectKey()

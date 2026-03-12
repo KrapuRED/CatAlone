@@ -116,6 +116,7 @@ public class MeowBattleManager : MiniGame
 
     public void OnWordCompleted()
     {
+        AudioManager.instance.PlaySoundEffect("Meow");
         _playerCatScore += _gainScorePlayerCat;
         _neighbourCatScore -= _gainScorePlayerCat;
         CheckScore();

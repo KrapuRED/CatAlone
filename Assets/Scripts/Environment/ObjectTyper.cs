@@ -7,7 +7,7 @@ public class ObjectTyper : MonoBehaviour
     [SerializeField] private ObjectTyperSO ObjectTyperData;
     public string word => ObjectTyperData.wordLetter;
     [SerializeField] private TextMeshProUGUI wordTextUI;
-
+    [SerializeField] private string soundName;
     [SerializeField] private bool isCompleted;
 
     private void Start()
@@ -24,9 +24,10 @@ public class ObjectTyper : MonoBehaviour
 
     public void OnWordCompleted()
     {
-        Debug.Log($"{ObjectTyperData.wordLetter} is complete!");
+        //Debug.Log($"{ObjectTyperData.wordLetter} is complete!");
         isCompleted = true;
 
+        AudioManager.instance.PlaySoundEffect(soundName);
         //LevelManager to change the scene and start to play the minigame
         if (ObjectTyperData.isCanChangeScene)
             LevelManager.instance.ChangeScene(ObjectTyperData.nameObject);

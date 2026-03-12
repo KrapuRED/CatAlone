@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectTyperData: {fileID: 11400000, guid: c9d3e6c8b9aadb04ab363a3c87298c32, type: 2}
   wordTextUI: {fileID: 2922971456717966423}
+  soundName: Typed Non-Minigame
   isCompleted: 0
 --- !u!1 &2053248642960748267
 GameObject:
