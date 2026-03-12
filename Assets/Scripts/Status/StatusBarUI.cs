@@ -11,6 +11,11 @@ public class StatusBarUI : MonoBehaviour
     private void Start()
     {
         statusNameText.text = statusData.statusName;
-        statusbarMeter.value = statusData.deafultStatusPoint;
+       
+    }
+
+    public void UpdateStatusBar(float valueStatus)
+    {
+        statusbarMeter.value = valueStatus / 100;
     }
 }

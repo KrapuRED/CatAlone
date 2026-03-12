@@ -44,7 +44,7 @@ public class PlayCatchManager : MiniGame
 
     public override void CheckEnterLetter(string typingLetter)
     {
-        //Debug.Log("[PlayCatchManager - CheckEnterLetter] check letter : " + typingLetter);
+        //Debug.Log("[PlayCatchManager - CheckEnterLetter] check currentLetter : " + typingLetter);
 
         if (_mouseCatch != null)
         {
@@ -73,7 +73,7 @@ public class PlayCatchManager : MiniGame
 
     private MouseWord FindMouseWord(string letter)
     {
-        //Debug.Log("[PlayCatchManager - FindMouseWord] check letter : " + letter);
+        //Debug.Log("[PlayCatchManager - FindMouseWord] check currentLetter : " + currentLetter);
         if (_activeMouseWords.Count == 0) 
             return null;
 
@@ -82,7 +82,7 @@ public class PlayCatchManager : MiniGame
         foreach (MouseWord word in _activeMouseWords)
         {
             bool isCorrectLetter = word.IsCorrectLetter(letter);
-            //Debug.Log("[PlayCatchManager - IsCorrectLetter] check letter : " + isCorrectLetter);
+            //Debug.Log("[PlayCatchManager - IsCorrectLetter] check currentLetter : " + isCorrectLetter);
             if (isCorrectLetter)
             {
                 matches.Add(word);

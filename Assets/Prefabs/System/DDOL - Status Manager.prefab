@@ -47,3 +47,4 @@ MonoBehaviour:
   _statusHunger: 0
   _statusSocial: 0
   _statusFun: 0
+  updateStatusUI: {fileID: 11400000, guid: 1ca15a2b3915e064e89d1ede4c0accab, type: 2}

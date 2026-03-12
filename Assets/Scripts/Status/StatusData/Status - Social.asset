@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Status - Social
   m_EditorClassIdentifier: 
   statusName: Social
-  deafultStatusPoint: 100
+  statusType: 2
+  deafultStatusPoint: 0
   saveStatusPoint: 0

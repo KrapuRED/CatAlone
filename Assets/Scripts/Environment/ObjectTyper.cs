@@ -44,7 +44,7 @@ public class ObjectTyper : MonoBehaviour
 
     private bool IsCorrectLetter(string letter)
     {
-        //Debug.Log($"Check Letter : {letter}");
+        //Debug.Log($"Check Letter : {currentLetter}");
         if (_charIndex >= ObjectTyperData.wordLetter.Length)
             return false;
 
@@ -70,6 +70,7 @@ public class ObjectTyper : MonoBehaviour
 
     public void ResetLetter()
     {
+        _charIndex = 0;
         SetWordText(ObjectTyperData.wordLetter);
     }
 

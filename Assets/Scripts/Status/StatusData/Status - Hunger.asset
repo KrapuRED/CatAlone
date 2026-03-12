@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Status - Hunger
   m_EditorClassIdentifier: 
   statusName: Hunger
-  deafultStatusPoint: 100
+  statusType: 1
+  deafultStatusPoint: 0
   saveStatusPoint: 0

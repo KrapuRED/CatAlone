@@ -5,7 +5,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] private bool _isMiniGameActive;
+    [SerializeField] private bool _isTutorialDone;
     public bool isMiniGameActive => _isMiniGameActive;
+    public bool isTutorialDone => _isTutorialDone;
 
     private void Awake()
     {
@@ -19,6 +21,11 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetIsMiniGameActive(bool isActive)
+    {
+        _isMiniGameActive = isActive;
+    }
+
+    public void SetITutorialActive(bool isActive)
     {
         _isMiniGameActive = isActive;
     }

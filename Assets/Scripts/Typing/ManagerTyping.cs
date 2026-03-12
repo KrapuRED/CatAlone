@@ -26,10 +26,9 @@ public class ManagerTyping : MonoBehaviour
         Debug.Log("Letter : " + typingLetter);
 
         //check if the minigame is playing
-        if (!LevelManager.instance.CheckHomeScene())
-            CheckMiniGame(typingLetter);
+        CheckMiniGame(typingLetter);
 
-        if (!GameManager.instance.isMiniGameActive)
+        if (!GameManager.instance.isMiniGameActive && GameManager.instance.isTutorialDone)
             CheckObjectTypeLetter();
     }
 
@@ -70,6 +69,7 @@ public class ManagerTyping : MonoBehaviour
     {
         if (typingLetter.Length > lockTarget.word.Length || !lockTarget.word.StartsWith(typingLetter))
         {
+            lockTarget.ResetLetter();
             ResetTyping();
             return;
         }

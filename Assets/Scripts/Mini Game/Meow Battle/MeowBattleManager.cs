@@ -76,7 +76,7 @@ public class MeowBattleManager : MiniGame
 
     private bool IsCorrectLetter(string letter)
     {
-        //Debug.Log($"Check Letter : {letter}");
+        //Debug.Log($"Check Letter : {currentLetter}");
         if (_charIndex >= _currentWord.Length)
             return false;
 

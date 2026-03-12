@@ -1,10 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class NeighbourCat : MonoBehaviour
 {
     [SerializeField] private float _timerMeow;
     [SerializeField] private bool _isWaiting;
+    [SerializeField] private List<SpawnRate> _spawnRateList = new List<SpawnRate>();
 
     [Header("Word Bank")]
     [SerializeField] private WordBank _wordBank;
@@ -24,8 +26,28 @@ public class NeighbourCat : MonoBehaviour
         if (_meowRoutine != null)
             return;
 
+        _timerMeow = GetDelayMeow();
+
         _isWaiting = true;
         _meowRoutine = StartCoroutine(WaitingToMeow());
+    }
+
+    private float GetDelayMeow()
+    {
+        int randomValue = Random.Range(0, 100);
+
+        int cumulative = 0;
+
+        foreach (SpawnRate rate in _spawnRateList)
+        {
+            cumulative += rate.rate;
+
+            if (randomValue < cumulative)
+            {
+                return rate.spawnRate;
+            }
+        }
+        return 0;
     }
 
     private IEnumerator WaitingToMeow()
