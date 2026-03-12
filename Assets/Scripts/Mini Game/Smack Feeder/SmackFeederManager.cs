@@ -26,6 +26,8 @@ public class SmackFeederManager : MiniGame
     [SerializeField] private ReadyToTapEventSO _readyToTapEventSO;
     [SerializeField] private RemoveTapKeyEventSO _removeTapKeyEventSO;
 
+    [SerializeField] private FeederControllerUI _controllerUI;
+
     private void Awake()
     {
         if (instance == null)
@@ -47,13 +49,13 @@ public class SmackFeederManager : MiniGame
 
         if (_missClick >= _maxMissClick)
         {
-            EndGame();
+            EndMiniGame();
             return;
         }
 
         if (_currentLengthMiniGame <= 0)
         {
-            EndGame();
+            EndMiniGame();
         }
     }
 
@@ -71,7 +73,13 @@ public class SmackFeederManager : MiniGame
 
         TapKey currentKey = _tapKeys.First();
         if (!currentKey.IsCorrectKey(typingLetter.ToUpper()))
+        {
+            _missClick++;
+            _controllerUI.UpdateFailedUI();
+            if (_missClick >= _maxMissClick)
+                EndMiniGame();
             return;
+        }
 
         //check _targetTiming on the first pop-up
         string result = currentKey.CheckTiming(_currentTiming);
@@ -99,12 +107,11 @@ public class SmackFeederManager : MiniGame
         SetCurrentKeyWord();
     }
 
-    private void EndGame()
+    private void EndMiniGame()
     {
         StopAllCoroutines();
         //Say to status win or lose
         MiniGameManager.instance.EndMiniGame(type, FindWinner());
-        ManagerPanel.instance.OpenPanel("EndMiniGame");
     }
 
     private void AssignTapKey(TapKey tapKey)
@@ -116,6 +123,7 @@ public class SmackFeederManager : MiniGame
     {
         _missClick++;
         _currentTiming = 0;
+        _controllerUI.UpdateFailedUI();
         ManagerTyping.instance.ResetTyping();
 
         _tapKeys.Remove(tapKey);

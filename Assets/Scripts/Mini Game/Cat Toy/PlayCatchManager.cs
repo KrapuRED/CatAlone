@@ -52,7 +52,7 @@ public class PlayCatchManager : MiniGame
             return;
         }
 
-        if (_lockMouseWord != null)
+        if (_lockMouseWord != null && !_isMouseCatch)
         {
             CheckLockWord(typingLetter);
             return;
@@ -94,7 +94,9 @@ public class PlayCatchManager : MiniGame
             return null;
 
         if (matches.Count == 1)
+        {
             return matches[0];
+        }
 
         return null;
     }
@@ -109,6 +111,7 @@ public class PlayCatchManager : MiniGame
             if (IsWordCompleted())
             {
                 _isMouseCatch = true;
+                MouseSpawnManager.instance.StopSpawn();
                 _mouseCatch = _lockMouseWord.GetMouse();
                 _mouseCatch.MouseGetCatch();
                 _movePawsToMouseEventSO.OnRaise(_mouseCatch.transform);

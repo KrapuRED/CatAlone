@@ -7,7 +7,7 @@ public class PatrolState : State
     // Update is called once per frame
     void Update()
     {
-        if (!_currentMouse.MouseMovement.isResting)
+        if (!_currentMouse.MouseMovement.isResting && !_currentMouse.mouseCatch)
         {
             _currentMouse.UpdateTime();
             _currentMouse.MouseMovement.OnRoaming();

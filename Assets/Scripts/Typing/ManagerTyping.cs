@@ -25,11 +25,12 @@ public class ManagerTyping : MonoBehaviour
         typingLetter += typedLetter;
         Debug.Log("Letter : " + typingLetter);
 
-        CheckObjectTypeLetter();
-
         //check if the minigame is playing
         if (!LevelManager.instance.CheckHomeScene())
             CheckMiniGame(typingLetter);
+
+        if (!GameManager.instance.isMiniGameActive)
+            CheckObjectTypeLetter();
     }
 
     #region Home Scene Typing
@@ -54,7 +55,7 @@ public class ManagerTyping : MonoBehaviour
 
         if (matches.Count == 0)
         {
-            //ResetTyping();
+            ResetTyping();
             return;
         }
 

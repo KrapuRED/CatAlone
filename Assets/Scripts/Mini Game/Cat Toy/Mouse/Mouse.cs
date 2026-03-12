@@ -14,6 +14,7 @@ public class Mouse : MonoBehaviour
     [SerializeField] private MouseWord _mouseWord;
     [SerializeField] protected MouseMovement _mouseMovement;
     [SerializeField] private bool _mouseCatch;
+    public bool mouseCatch => _mouseCatch;  
 
     [Header("Events")]
     [SerializeField] private ActiveMouseWordEventSO _activeMouseWordEventSO;

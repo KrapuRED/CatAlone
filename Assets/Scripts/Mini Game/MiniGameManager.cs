@@ -26,7 +26,11 @@ public class MiniGameManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
-    
+
+    private void Start()
+    {
+        GameManager.instance.SetIsMiniGameActive(true);
+    }
     public void CheckTyping(string typeLetter)
     {
         //Debug.Log("[MiniGameManager] Letter : " + typeLetter);
@@ -44,6 +48,8 @@ public class MiniGameManager : MonoBehaviour
         else
             StatusManager.instance.ChangeStatusPoint(miniGameType, _gainLoose);
 
+
+        GameManager.instance.SetIsMiniGameActive(false);
         ManagerPanel.instance.OpenPanel("EndMiniGame");
         _isMiniGameEnd = true;
     }

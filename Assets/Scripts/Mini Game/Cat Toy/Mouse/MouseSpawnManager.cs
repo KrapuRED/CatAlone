@@ -18,6 +18,7 @@ public class MouseSpawnManager : MonoBehaviour
     [SerializeField] private Transform spawnContinaer;
     [SerializeField] private List<WayPoint> waypoints = new List<WayPoint>();
     [SerializeField] private float _spawnTime;
+    [SerializeField] private bool _canSpawn;
     [SerializeField] private float _currentSpawnTime;
 
     private void Awake()
@@ -34,7 +35,7 @@ public class MouseSpawnManager : MonoBehaviour
         if (spawnContinaer.childCount > 2)
             return;
 
-        if (_currentSpawnTime >= _spawnTime)
+        if (_currentSpawnTime >= _spawnTime && _canSpawn)
         {
             _currentSpawnTime = 0;
             SpawnMouse();
@@ -64,6 +65,11 @@ public class MouseSpawnManager : MonoBehaviour
         {
             mouse.MouseMovement.SetUpWayPoints(startPoint.wayPointPosition, endPoint.wayPointPosition);
         }
+    }
+
+    public void StopSpawn()
+    {
+        _canSpawn = false;
     }
 
     private WayPoint GetEndWayPoint(int indexWayPoint)
