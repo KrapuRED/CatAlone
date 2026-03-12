@@ -62,6 +62,7 @@ public class ManagerTyping : MonoBehaviour
         if (matches.Count == 1)
         {
             lockTarget = matches[0];
+            CheckLockTarget();
         }
     }
 
@@ -72,6 +73,8 @@ public class ManagerTyping : MonoBehaviour
             ResetTyping();
             return;
         }
+
+        lockTarget.CheckEnterLetter(typingLetter);
 
         if (lockTarget.word == typingLetter)
         {
