@@ -10,7 +10,7 @@ public class HoldBarControllerUI : MonoBehaviour
     [SerializeField] private float _currentProgress;
 
     [Header("UI")]
-    [SerializeField] private Slider _sliderProgress;
+    [SerializeField] private Image _sliderProgress;
 
     [Header("Event")]
     [SerializeField] private UpdateGripBarUIEventSO _updateGripBarUI;
@@ -34,7 +34,7 @@ public class HoldBarControllerUI : MonoBehaviour
 
     public void UpdaetProgressBar(float progress)
     {
-        _sliderProgress.value = progress / 100;
+        _sliderProgress.fillAmount = progress / 100;
     }
 
     public void UpdateGribBar(float gribValue)

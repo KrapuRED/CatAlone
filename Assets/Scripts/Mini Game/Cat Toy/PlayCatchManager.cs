@@ -85,17 +85,9 @@ public class PlayCatchManager : MiniGame
             //Debug.Log("[PlayCatchManager - IsCorrectLetter] check currentLetter : " + isCorrectLetter);
             if (isCorrectLetter)
             {
-                matches.Add(word);
+                return word;
             }
                 
-        }
-            
-        if (matches.Count == 0)
-            return null;
-
-        if (matches.Count == 1)
-        {
-            return matches[0];
         }
 
         return null;
@@ -147,6 +139,7 @@ public class PlayCatchManager : MiniGame
     {
         _lockMouseWord = null;
         _remainingWord = _currentWord = string.Empty;
+        ManagerTyping.instance.ResetTyping();
     }
 
     public void RemoveMouse(MouseWord mouse)
