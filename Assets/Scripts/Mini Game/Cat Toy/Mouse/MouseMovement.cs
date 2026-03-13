@@ -13,6 +13,7 @@ public class MouseMovement : MonoBehaviour
 
     [SerializeField] private bool _isResting;
     private Rigidbody2D rb2d;
+    [SerializeField] private bool isEnginePlaying;
 
     public bool isResting => _isResting;
 
@@ -48,11 +49,21 @@ public class MouseMovement : MonoBehaviour
 
     public void OnRoaming()
     {
+        if (!isEnginePlaying)
+        {
+            AudioManager.instance.PlaySoundEffect("Mouse Toy Engine");
+            isEnginePlaying = true;
+        }
         MoveToTarget(EndWayPoint);
     }
 
     public void OnStopMovement()
     {
+        if (isEnginePlaying)
+        {
+            AudioManager.instance.StopSoundEffect();
+            isEnginePlaying = false;
+        }
         rb2d.linearVelocity = Vector2.zero;
     }
 
@@ -64,6 +75,7 @@ public class MouseMovement : MonoBehaviour
         }
 
         _isResting = true;
+        OnStopMovement();
 
         _currentMouse.OpenWindowCatch();
 

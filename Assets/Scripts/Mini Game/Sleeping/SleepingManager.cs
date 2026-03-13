@@ -29,7 +29,8 @@ public class SleepingManager : MiniGame
         }
 
         if (_currentSleepTime <= 0 && _isSleeping)
-            MiniGameManager.instance.EndMiniGame(type, GameResult.Win);
+            WeakingUp();
+
     }
 
     private void Start()
@@ -56,8 +57,17 @@ public class SleepingManager : MiniGame
             {
                 _sleepDuration = _currentSleepTime = sleep.Duration;
                 _isSleeping = true;
+                AudioManager.instance.PlaySoundEffect("Purring");
                 return;
             }
         }
+    }
+
+    private void WeakingUp()
+    {
+        _isSleeping = false;
+        AudioManager.instance.StopSoundEffect();
+        AudioManager.instance.PlaySoundEffect("Pop");
+        MiniGameManager.instance.EndMiniGame(type, GameResult.Win);
     }
 }

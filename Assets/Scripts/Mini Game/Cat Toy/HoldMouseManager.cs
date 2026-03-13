@@ -59,6 +59,7 @@ public class HoldMouseManager : MiniGame
                 }
 
                 _currentProgress += _gainProgressen;
+                AudioManager.instance.PlaySoundEffect("Progress");
 
                 _controller.UpdaetProgressBar(_currentProgress);
                 _currentGainTime = 0;
@@ -92,6 +93,7 @@ public class HoldMouseManager : MiniGame
             {
                 _currentProgress--;
                 _currentLoseProgressTime = 0;
+                AudioManager.instance.PlaySoundEffect("Squeak");
                 _controller.UpdaetProgressBar(_currentProgress);
             }
 

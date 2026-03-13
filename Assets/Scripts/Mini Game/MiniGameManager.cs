@@ -61,6 +61,7 @@ public class MiniGameManager : MonoBehaviour
         
         if (miniGameType != MiniGameType.None)
         {
+            AudioManager.instance.PlaySoundEffect("MiniGameEnd");
             ManagerPanel.instance.OpenPanel("EndMiniGame");
         }
 
