@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Curtain
   m_EditorClassIdentifier: 
   nameObject: Curtain
-  wordLetter: close
+  wordLetter: open
+  isCanChangeScene: 0

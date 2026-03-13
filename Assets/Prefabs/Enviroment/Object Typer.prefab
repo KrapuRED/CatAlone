@@ -50,6 +50,14 @@ MonoBehaviour:
   wordTextUI: {fileID: 2922971456717966423}
   soundName: Typed Non-Minigame
   isCompleted: 0
+  _currentLetter: 
+  _remeaningLetter: 
+  hiddenObjects: []
+  isContainer: 0
+  closeSprite: {fileID: 0}
+  OpenSprite: {fileID: 0}
+  isOpened: 0
+  _spriteRenderer: {fileID: 6271571805120002152}
 --- !u!1 &2053248642960748267
 GameObject:
   m_ObjectHideFlags: 0

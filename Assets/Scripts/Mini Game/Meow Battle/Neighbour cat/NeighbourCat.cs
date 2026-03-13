@@ -72,6 +72,7 @@ public class NeighbourCat : MonoBehaviour
         _currentWord = _wordBank.GetWordNeighbour();
 
         //Debug.Log("Neighbour Cat : " + _currentWord);
+        AudioManager.instance.PlaySoundEffect("Meow");
 
         textAreaNeighbourCatUI.SetMeowText(_currentWord);
         MeowBattleManager.instance.NeighbourCatMeowing();

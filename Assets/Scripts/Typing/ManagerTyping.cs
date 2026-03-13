@@ -78,11 +78,6 @@ public class ManagerTyping : MonoBehaviour
         }
 
         lockTarget.CheckEnterLetter(typingLetter);
-
-        if (lockTarget.word == typingLetter)
-        {
-            ResetTyping();
-        }
     }
     #endregion
 
