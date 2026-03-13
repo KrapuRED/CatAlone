@@ -127,6 +127,8 @@ public class SmackFeederManager : MiniGame
             _controllerUI.UpdateFailedUI();
             if (_missClick >= _maxMissClick)
                 EndMiniGame();
+            MissRemoveTapKey(currentKey);
+            currentKey.OnDestroyKey();
             return;
         }
 
@@ -138,7 +140,7 @@ public class SmackFeederManager : MiniGame
         //if in perfect timig say "Perfect" or miss say "MISS"
         ManagerTyping.instance.ResetTyping();
         RemoveTapKey(currentKey);
-        currentKey.OnCorrectKey();
+        currentKey.OnDestroyKey();
     }
 
     private void SetCurrentKeyWord()

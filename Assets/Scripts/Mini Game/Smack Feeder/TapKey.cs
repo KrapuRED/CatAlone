@@ -76,7 +76,7 @@ public class TapKey : MonoBehaviour
         return "Miss";
     }
 
-    public void OnCorrectKey()
+    public void OnDestroyKey()
     {
         Destroy(gameObject);
     }

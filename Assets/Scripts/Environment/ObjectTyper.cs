@@ -45,8 +45,9 @@ public class ObjectTyper : MonoBehaviour
     private bool IsCorrectLetter(string letter)
     {
         //Debug.Log($"Check Letter : {currentLetter}");
-        if (_charIndex >= ObjectTyperData.wordLetter.Length)
+        if (_charIndex >= ObjectTyperData.wordLetter.Length || string.IsNullOrEmpty(letter) || _charIndex >= letter.Length)
             return false;
+
 
         if (ObjectTyperData.wordLetter[_charIndex] == letter[_charIndex])
         {
