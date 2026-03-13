@@ -39,6 +39,10 @@ public class SoundEffectManager : MonoBehaviour
 
     public void StopPlayAudio()
     {
-        
+        foreach (AudioSource source in soundEffectSources)
+        {
+            if (source.isPlaying)
+                source.Stop();
+        }
     }
 }

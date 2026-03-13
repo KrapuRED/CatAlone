@@ -103,6 +103,7 @@ public class PlayCatchManager : MiniGame
             if (IsWordCompleted())
             {
                 _isMouseCatch = true;
+                AudioManager.instance.PlaySoundEffect("Mouse Catch");
                 MouseSpawnManager.instance.StopSpawn();
                 _mouseCatch = _lockMouseWord.GetMouse();
                 _mouseCatch.MouseGetCatch();

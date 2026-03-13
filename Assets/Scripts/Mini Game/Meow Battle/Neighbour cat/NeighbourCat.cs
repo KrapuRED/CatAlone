@@ -74,7 +74,7 @@ public class NeighbourCat : MonoBehaviour
 
         //Debug.Log("Neighbour Cat : " + _currentWord);
         _catAniamtion.PlayTriggerAnimation("meow");
-        AudioManager.instance.PlaySoundEffect("Meow");
+        AudioManager.instance.PlaySoundEffect("Neigbourg Meow");
 
         textAreaNeighbourCatUI.SetMeowText(_currentWord);
         MeowBattleManager.instance.NeighbourCatMeowing();

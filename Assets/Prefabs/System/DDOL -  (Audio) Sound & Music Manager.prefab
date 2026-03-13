@@ -592,6 +592,32 @@ MonoBehaviour:
   - soundName: Feeder Food Fall
     clipSoundEffects:
     - {fileID: 8300000, guid: aba0a8b1b86400948adc7be1b51f426d, type: 3}
+  - soundName: Neigbourg Meow
+    clipSoundEffects:
+    - {fileID: 8300000, guid: c445c219ded7c5f47a6942327416963c, type: 3}
+    - {fileID: 8300000, guid: 72dc10e087077694bb989470c728ddb2, type: 3}
+    - {fileID: 8300000, guid: 2b2654327cf6f6143a5d6ec46c5fb510, type: 3}
+  - soundName: Purring
+    clipSoundEffects:
+    - {fileID: 8300000, guid: c9e0522b20503874286828fd9421e914, type: 3}
+  - soundName: Pop
+    clipSoundEffects:
+    - {fileID: 8300000, guid: c18ff1056860650408f39af08999cf21, type: 3}
+  - soundName: MiniGameEnd
+    clipSoundEffects:
+    - {fileID: 8300000, guid: f33d45735f379f2489e2bc54aab8de09, type: 3}
+  - soundName: Progress
+    clipSoundEffects:
+    - {fileID: 8300000, guid: 7d44e15a8a2443346901d8879566d393, type: 3}
+  - soundName: Squeak
+    clipSoundEffects:
+    - {fileID: 8300000, guid: 0c8a17a310e21b5499e6cf56af984ade, type: 3}
+  - soundName: Mouse Toy Engine
+    clipSoundEffects:
+    - {fileID: 8300000, guid: f8744d585b7980d4c838a3b2c653fa31, type: 3}
+  - soundName: Mouse Catch
+    clipSoundEffects:
+    - {fileID: 8300000, guid: 3b64a7962385d3f4390cafc9edb7570c, type: 3}
 --- !u!1 &8751450054465740179
 GameObject:
   m_ObjectHideFlags: 0

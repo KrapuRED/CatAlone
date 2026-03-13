@@ -794,7 +794,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85228621}
   m_CullTransparentMesh: 1
---- !u!1001 &172817227
+--- !u!1001 &174485243
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -845,22 +845,6 @@ PrefabInstance:
     - target: {fileID: 7813795155919129315, guid: 07e4fdff3e541a049aa95a4472183b13, type: 3}
       propertyPath: m_Name
       value: DDOL - Status Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8604580508549950782, guid: 07e4fdff3e541a049aa95a4472183b13, type: 3}
-      propertyPath: _statusFun
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8604580508549950782, guid: 07e4fdff3e541a049aa95a4472183b13, type: 3}
-      propertyPath: _statusHunger
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8604580508549950782, guid: 07e4fdff3e541a049aa95a4472183b13, type: 3}
-      propertyPath: _statusSocial
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8604580508549950782, guid: 07e4fdff3e541a049aa95a4472183b13, type: 3}
-      propertyPath: _statusHappines
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5810,7 +5794,7 @@ SceneRoots:
   - {fileID: 1909305257}
   - {fileID: 1739202706}
   - {fileID: 615904183}
-  - {fileID: 172817227}
   - {fileID: 1283301038502264432}
   - {fileID: 8806053990279215198}
+  - {fileID: 174485243}
   - {fileID: 1916337008}
