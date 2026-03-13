@@ -149,13 +149,14 @@ GameObject:
   - component: {fileID: 7918051336960545620}
   - component: {fileID: 8716610119401065630}
   - component: {fileID: 7921771089160453007}
+  - component: {fileID: 7712354462114435694}
   m_Layer: 5
   m_Name: Panel - EndMiniGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7918051336960545620
 RectTransform:
   m_ObjectHideFlags: 0
@@ -214,6 +215,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7712354462114435694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547013011741480855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3acbcfefcda66d0408623dc73b9572e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardUI: {fileID: 9189509839346533169}
+  updateRewardEventSO: {fileID: 11400000, guid: e8f7a42698293d14da3df33c9c29cab7, type: 2}
 --- !u!1 &1139861159946280160
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,8 +390,15 @@ MonoBehaviour:
   ObjectTyperData: {fileID: 11400000, guid: 1c690b7c4c5a778499ead084aab0795c, type: 2}
   wordTextUI: {fileID: 3118017536993939592}
   soundName: Typed Non-Minigame
-  isCompleted: 0
+  _currentLetter: 
   _remeaningLetter: 
+  _charIndex: 0
+  hiddenObjects: []
+  isContainer: 0
+  closeSprite: {fileID: 0}
+  OpenSprite: {fileID: 0}
+  isOpened: 0
+  _spriteRenderer: {fileID: 0}
 --- !u!1 &3372570937977285936
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,9 +431,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4366840023566315089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 205, y: -80}
   m_SizeDelta: {x: 400, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6679457768855965048

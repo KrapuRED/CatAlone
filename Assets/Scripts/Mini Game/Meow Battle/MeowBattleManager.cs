@@ -17,6 +17,7 @@ public class MeowBattleManager : MiniGame
     //remeaning meow
     [SerializeField] private string _remainingWord = string.Empty;
     [SerializeField] private int _charIndex;
+    [SerializeField] private CatAniamtion _playerAnimation;
 
     [Header("UI")]
     [SerializeField] private WordTypingUI _wordTypingUI;
@@ -117,6 +118,8 @@ public class MeowBattleManager : MiniGame
     public void OnWordCompleted()
     {
         AudioManager.instance.PlaySoundEffect("Meow");
+        _playerAnimation.PlayTriggerAnimation("meow");
+
         _playerCatScore += _gainScorePlayerCat;
         _neighbourCatScore -= _gainScorePlayerCat;
         CheckScore();
@@ -150,7 +153,7 @@ public class MeowBattleManager : MiniGame
 
     private GameResult FindWinner()
     {
-        if (_playerCatScore <= 0)
+        if (_playerCatScore <= 5)
             return GameResult.Loose;
 
         return GameResult.Win;

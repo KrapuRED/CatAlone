@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Panel
+public class PanelData
 {
     public string panelName;
     public GameObject panel;
@@ -12,8 +12,8 @@ public class ManagerPanel : MonoBehaviour
 {
     public static ManagerPanel instance;
 
-    [Header("Panel Config")]
-    public List<Panel> panelList = new List<Panel>();
+    [Header("PanelData Config")]
+    public List<PanelData> panelList = new List<PanelData>();
 
     private void Awake()
     {

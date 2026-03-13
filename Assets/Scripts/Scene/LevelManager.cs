@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
     public void ChangeScene(string nameScene){
         Debug.Log("rate to " + nameScene);
         currentScene = nameScene;
+        StatusManager.instance.RefreshUI();
         SceneManager.LoadScene(nameScene);
     }
 

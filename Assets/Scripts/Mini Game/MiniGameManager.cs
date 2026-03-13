@@ -16,6 +16,7 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] private float _gainLoose;
     [SerializeField] private bool _isMiniGameEnd;
     [SerializeField] private CheckLetterEventSO checkLetterEvent;
+    [SerializeField] private UpdateRewardEventSO updateRewardEvent;
 
     private void Awake()
     {
@@ -44,15 +45,24 @@ public class MiniGameManager : MonoBehaviour
             return;
 
         if (result == GameResult.Win)
+        {
+            updateRewardEvent.OnRiase(miniGameType, _gainWin);
             StatusManager.instance.ChangeStatusPoint(miniGameType, _gainWin);
+        }
+           
         else
+        {
+            updateRewardEvent.OnRiase(miniGameType, _gainLoose);
             StatusManager.instance.ChangeStatusPoint(miniGameType, _gainLoose);
+        }
 
 
         GameManager.instance.SetIsMiniGameActive(false);
         
         if (miniGameType != MiniGameType.None)
+        {
             ManagerPanel.instance.OpenPanel("EndMiniGame");
+        }
 
         _isMiniGameEnd = true;
     }

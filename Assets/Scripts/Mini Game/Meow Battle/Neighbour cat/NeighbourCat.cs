@@ -7,6 +7,7 @@ public class NeighbourCat : MonoBehaviour
     [SerializeField] private float _timerMeow;
     [SerializeField] private bool _isWaiting;
     [SerializeField] private List<SpawnRate> _spawnRateList = new List<SpawnRate>();
+    [SerializeField] private CatAniamtion _catAniamtion;
 
     [Header("Word Bank")]
     [SerializeField] private WordBank _wordBank;
@@ -72,6 +73,7 @@ public class NeighbourCat : MonoBehaviour
         _currentWord = _wordBank.GetWordNeighbour();
 
         //Debug.Log("Neighbour Cat : " + _currentWord);
+        _catAniamtion.PlayTriggerAnimation("meow");
         AudioManager.instance.PlaySoundEffect("Meow");
 
         textAreaNeighbourCatUI.SetMeowText(_currentWord);

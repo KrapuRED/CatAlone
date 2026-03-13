@@ -7,6 +7,11 @@ public class StatusBarController : MonoBehaviour
 
     [SerializeField] private UpdateStatusUIEventSO UpdateStatusUI;
 
+    private void Start()
+    {
+        StatusManager.instance.RefreshUI();
+    }
+
     private  void UpdateStatus(float valueHungger, float valueSocial, float valueHappnes)
     {
        foreach (StatusBarUI statusBar in statusBarUIs)

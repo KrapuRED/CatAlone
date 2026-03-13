@@ -539,6 +539,7 @@ MonoBehaviour:
   _gainLoose: 0
   _isMiniGameEnd: 0
   checkLetterEvent: {fileID: 11400000, guid: f0008d67ae4de684f8f3050634923607, type: 2}
+  updateRewardEvent: {fileID: 11400000, guid: e8f7a42698293d14da3df33c9c29cab7, type: 2}
 --- !u!1 &394118305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,6 +2000,57 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1178259568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1178259569}
+  - component: {fileID: 1178259570}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1178259569
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178259568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1687567860}
+  m_Father: {fileID: 1932441177}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1178259570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178259568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3acbcfefcda66d0408623dc73b9572e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardUI: {fileID: 1687567861}
+  updateRewardEventSO: {fileID: 11400000, guid: e8f7a42698293d14da3df33c9c29cab7, type: 2}
 --- !u!1 &1182851555
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,6 +2170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerValue: {fileID: 667391954}
   timerText: {fileID: 899228750}
+  updateTimerUI: {fileID: 11400000, guid: c54eb06ba2abdc84cb79e67c663a8452, type: 2}
 --- !u!114 &1253443121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2636,7 +2689,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1932441177}
+    m_TransformParent: {fileID: 1178259569}
     m_Modifications:
     - target: {fileID: 547013011741480855, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
       propertyPath: m_Name
@@ -2696,15 +2749,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7918051336960545620, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7918051336960545620, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7918051336960545620, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7918051336960545620, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2757,6 +2810,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7918051336960545620, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
   m_PrefabInstance: {fileID: 1687567858}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1687567861 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9189509839346533169, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
+  m_PrefabInstance: {fileID: 1687567858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1715358538
 GameObject:
   m_ObjectHideFlags: 0
@@ -3261,8 +3325,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1687567860}
   - {fileID: 1253443119}
+  - {fileID: 1178259569}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
