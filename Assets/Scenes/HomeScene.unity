@@ -319,6 +319,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 8869224847712539455, guid: a9198941fead2e44f91fbd890a1f66c8, type: 3}
+    - target: {fileID: 6271571805120002152, guid: 6f5c2c860bf45ab4bb7236fe32a16819, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7782667977676741187, guid: 6f5c2c860bf45ab4bb7236fe32a16819, type: 3}
       propertyPath: soundName
       value: Typed Non-Minigame
@@ -616,7 +620,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 2488966402282579948, guid: 93345138ab2d462488840059a63c0a27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

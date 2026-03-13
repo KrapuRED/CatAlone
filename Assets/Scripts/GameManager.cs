@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!_isMiniGameActive && _isTutorialDone && _currentGameDuration > 0)
+        Debug.Log($"[GameManager - Update] is this HomeScene : {LevelManager.instance.CheckHomeScene()}");
+        if (!_isMiniGameActive && _isTutorialDone && _currentGameDuration > 0 && LevelManager.instance.CheckHomeScene())
         {
             _currentGameDuration -= Time.deltaTime;
             updateTimerUI.Raise(_currentGameDuration);

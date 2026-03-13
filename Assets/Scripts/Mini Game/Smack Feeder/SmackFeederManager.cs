@@ -13,6 +13,7 @@ public class SmackFeederManager : MiniGame
     [SerializeField] private int _maxMissClick;
     [SerializeField] private int _missClick;
     [SerializeField] private List<TapKey> _tapKeys = new List<TapKey>();
+    [SerializeField] private bool _isFeedingDone;
 
     [Header("Timing Config")]
     [SerializeField] private float _currentTiming;
@@ -110,9 +111,9 @@ public class SmackFeederManager : MiniGame
 
     private GameResult FindWinner()
     {
-        if (_missClick >= _maxMissClick)
-            return GameResult.Win;
-        return GameResult.Loose;
+        if (_missClick == _maxMissClick)
+            return GameResult.Loose;
+        return GameResult.Win;
     } 
 
     public override void CheckEnterLetter(string typingLetter)
@@ -121,6 +122,13 @@ public class SmackFeederManager : MiniGame
             return;
 
         TapKey currentKey = _tapKeys.First();
+
+        if (currentKey == null)
+        {
+            _currentTiming = 0;
+            return;
+        }
+
         if (!currentKey.IsCorrectKey(typingLetter.ToUpper()))
         {
             _missClick++;
@@ -164,7 +172,10 @@ public class SmackFeederManager : MiniGame
         //Say to status win or lose
         //AudioManager.instance.StopSoundEffect();
         _isMiniGameActive = false;
-        AudioManager.instance.PlaySoundEffect("Feeder Food Fall");
+        if (!_isFeedingDone)
+            AudioManager.instance.PlaySoundEffect("Feeder Food Fall");
+
+        _isFeedingDone = true;  
         MiniGameManager.instance.EndMiniGame(type, FindWinner());
     }
 

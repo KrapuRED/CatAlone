@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
+
+        currentScene = SceneManager.GetActiveScene().name;
     }
 
     public void ChangeScene(string nameScene){
