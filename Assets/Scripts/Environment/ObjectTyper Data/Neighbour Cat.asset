@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Neighbour Cat
   m_EditorClassIdentifier: 
   nameObject: Neighbour Cat
-  wordLetter: neighbour cat
+  wordLetter: neighbour
   isCanChangeScene: 1

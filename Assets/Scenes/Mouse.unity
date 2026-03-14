@@ -1745,7 +1745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  _gripZoneSize: 40
+  _gripZoneSize: 50
   _maxGrip: 0
   _minGrip: 0
   _currentPositionStatus: 0
