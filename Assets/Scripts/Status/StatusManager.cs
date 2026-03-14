@@ -8,6 +8,10 @@ public class StatusManager : MonoBehaviour
     [SerializeField] private float _statusSocial;
     [SerializeField] private float _statusHappines;
 
+    public float GetHunger() => _statusHunger;
+    public float GetSocial() => _statusSocial;
+    public float GetHappiness() => _statusHappines;
+
     [SerializeField] private UpdateStatusUIEventSO updateStatusUI;
     private void Awake()
     {

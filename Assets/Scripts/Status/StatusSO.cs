@@ -4,9 +4,9 @@ using UnityEngine;
 public enum StatusType
 {
     None, 
-    Hungger,
+    Hunger,
     Social,
-    Happines
+    Happiness
 }
 
 [CreateAssetMenu(fileName = "StatusSO", menuName = "Game Data/StatusSO")]
