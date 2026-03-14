@@ -41,7 +41,7 @@ public class StatusManager : MonoBehaviour
                 _statusHunger += status;
                 break;
             case MiniGameType.CatToy:
-                _statusHunger += status;
+                _statusHappines += status;
                 break;
         }
         RefreshUI();

@@ -172,9 +172,7 @@ public class SmackFeederManager : MiniGame
         //Say to status win or lose
         //AudioManager.instance.StopSoundEffect();
         _isMiniGameActive = false;
-        if (!_isFeedingDone)
-            AudioManager.instance.PlaySoundEffect("Feeder Food Fall");
-
+       
         _isFeedingDone = true;  
         MiniGameManager.instance.EndMiniGame(type, FindWinner());
     }

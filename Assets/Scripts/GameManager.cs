@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
             if (_currentGameDuration <= 0)
             {
-                ManagerPanel.instance.OpenPanel("EndGamePanel");
+                LevelManager.instance.ChangeScene("Closing") ;
             }
         }
     }

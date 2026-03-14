@@ -44,6 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae2e98f271a10e45ac8b4c587a4474e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicAlbums:
+  - NameMusic: MainMenu
+    MusicClip: {fileID: 8300000, guid: 17869dc6efeca4442a57eebc46af2bb8, type: 3}
+  - NameMusic: HomeScene
+    MusicClip: {fileID: 8300000, guid: e646e3b7695ac6b4ca9f081994c7c4a6, type: 3}
+  - NameMusic: NeighbourCat
+    MusicClip: {fileID: 8300000, guid: 31bf8659f86cfda4b93b153bf6fe60ce, type: 3}
+  - NameMusic: Feeder
+    MusicClip: {fileID: 8300000, guid: 47c2d3e48ea30304696f96d1795dd477, type: 3}
+  - NameMusic: CatToy
+    MusicClip: {fileID: 8300000, guid: a8ab682e0036ba742b8fd0173570990f, type: 3}
+  - NameMusic: Rest
+    MusicClip: {fileID: 8300000, guid: 0d0ece037a0307447b0ed4a0952f2100, type: 3}
 --- !u!1 &3191699328481084872
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e355a7c7c0a6c6b48a26ef6bcc693f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeDuration: 0.5
   musicLibrary: {fileID: 4574767381348635056}
   musicSource: {fileID: 3322372153268463560}
 --- !u!1 &3431185241750383145
@@ -313,10 +327,10 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
