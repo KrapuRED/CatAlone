@@ -872,7 +872,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -959,7 +959,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1111,7 +1111,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1198,7 +1198,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1285,7 +1285,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1650,7 +1650,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -6419773707192138387, guid: bb16f8bb86365544c91d7e2b4b44e858, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1750,7 +1750,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2189,7 +2189,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2354,7 +2354,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2473,6 +2473,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel - EndMiniGame
       objectReference: {fileID: 0}
+    - target: {fileID: 547013011741480855, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7918051336960545620, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2551,6 +2555,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7918051336960545620, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021064615041708386, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021064615041708386, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021064615041708386, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021064615041708386, guid: 60c76e0eaaf0c094f859fc0af571ac79, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
