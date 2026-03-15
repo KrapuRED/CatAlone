@@ -3638,6 +3638,10 @@ PrefabInstance:
       value: DDOL - GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 1147706309630938961, guid: 4eac9c3828fe5b640973d9fbcb759850, type: 3}
+      propertyPath: _durationGame
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147706309630938961, guid: 4eac9c3828fe5b640973d9fbcb759850, type: 3}
       propertyPath: _isTutorialDone
       value: 1
       objectReference: {fileID: 0}
