@@ -23,7 +23,7 @@ public class MouseSpawnManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null) 
+        if (instance == null)
             instance = this;
         else
             Destroy(gameObject);
@@ -31,11 +31,16 @@ public class MouseSpawnManager : MonoBehaviour
 
     private void Update()
     {
-        _currentSpawnTime += Time.time;
-        if (spawnContinaer.childCount > 2)
+        if (!_canSpawn)
             return;
 
-        if (_currentSpawnTime >= _spawnTime && _canSpawn)
+        // Only allow 1 mouse at a time
+        if (spawnContinaer.childCount >= 1)
+            return;
+
+        _currentSpawnTime += Time.deltaTime;
+
+        if (_currentSpawnTime >= _spawnTime)
         {
             _currentSpawnTime = 0;
             SpawnMouse();
@@ -74,7 +79,6 @@ public class MouseSpawnManager : MonoBehaviour
 
     private WayPoint GetEndWayPoint(int indexWayPoint)
     {
-        //Find Random But is not same isUP
         WayPoint startPoint = waypoints[indexWayPoint];
 
         List<WayPoint> possiblEndPoint = new List<WayPoint>();
@@ -92,5 +96,5 @@ public class MouseSpawnManager : MonoBehaviour
 
         int randomIndex = Random.Range(0, possiblEndPoint.Count);
         return possiblEndPoint[randomIndex];
-    } 
+    }
 }

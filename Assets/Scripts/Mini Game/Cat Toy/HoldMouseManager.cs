@@ -9,17 +9,24 @@ public class HoldMouseManager : MiniGame
     [SerializeField] private float _gripZoneSize;
     [SerializeField] private float _maxGrip;
     [SerializeField] private float _minGrip;
+
     [SerializeField] private float _currentPositionStatus;
-    [SerializeField] private float _currentLosePositionTime;
+
+    [SerializeField] private float _gripDepleteTimer;
+    [SerializeField] private float _gripDepleteDelay = 0.5f; // faster depletion
+
     [SerializeField] private float _releaseGripTimer;
 
-    [Header("IsCanProgress Config")]
-    [SerializeField] private int _completedProgress;
-    [SerializeField] private int _gainProgressen;
+    [Header("Progress Config")]
+    [SerializeField] private int _completedProgress = 100;
+    [SerializeField] private int _gainProgressen = 4;
     [SerializeField] private int _currentProgress;
-    [SerializeField] private float _delayTime;
-    [SerializeField] private float _currentGainTime;
-    [SerializeField] private float _currentLoseProgressTime;
+
+    [SerializeField] private float _progressGainTimer;
+    [SerializeField] private float _progressLoseTimer;
+
+    [SerializeField] private float _progressGainDelay = 1f;
+    [SerializeField] private float _progressLoseDelay = 1f;
 
     [Header("Word")]
     [SerializeField] private WordBank _wordBank;
@@ -32,13 +39,12 @@ public class HoldMouseManager : MiniGame
     [SerializeField] private UpdateGripTextEventSO _updateGripTextEventSO;
     [SerializeField] private bool _isPhase2Active;
 
-
     private void Awake()
     {
-        if (instance == null) 
+        if (instance == null)
             instance = this;
         else
-            Destroy(instance);
+            Destroy(gameObject);
     }
 
     private void Update()
@@ -46,11 +52,41 @@ public class HoldMouseManager : MiniGame
         if (!_isPhase2Active)
             return;
 
+        ReduceGrip();
+        HandleProgress();
+    }
+
+    // -------------------------
+    // GRIP SYSTEM
+    // -------------------------
+
+    private void ReduceGrip()
+    {
+        _gripDepleteTimer += Time.deltaTime;
+
+        if (_gripDepleteTimer >= _gripDepleteDelay)
+        {
+            _currentPositionStatus -= 1f;
+
+            _currentPositionStatus = Mathf.Clamp(_currentPositionStatus, 0f, 100f);
+
+            _controller.UpdateGribBar(_currentPositionStatus);
+
+            _gripDepleteTimer = 0;
+        }
+    }
+
+    // -------------------------
+    // PROGRESS SYSTEM
+    // -------------------------
+
+    private void HandleProgress()
+    {
         if (IsCanProgress())
         {
-            _currentGainTime += Time.deltaTime;
+            _progressGainTimer += Time.deltaTime;
 
-            if (_currentGainTime >= _delayTime)
+            if (_progressGainTimer >= _progressGainDelay)
             {
                 if (_currentProgress >= _completedProgress)
                 {
@@ -59,48 +95,37 @@ public class HoldMouseManager : MiniGame
                 }
 
                 _currentProgress += _gainProgressen;
+                _currentProgress = Mathf.Clamp(_currentProgress, 0, _completedProgress);
+
+                _controller.UpdaetProgressBar(_currentProgress);
+
                 AudioManager.instance.PlaySoundEffect("Progress");
 
-                _controller.UpdaetProgressBar(_currentProgress);
-                _currentGainTime = 0;
+                _progressGainTimer = 0;
             }
         }
-        ReducePosition();
-        ReduceProgress();
-    }
-
-    private void ReducePosition()
-    {
-        _currentLosePositionTime += Time.deltaTime;
-        if (_currentLosePositionTime >= _delayTime)
+        else
         {
-            if (_currentPositionStatus > 0)
+            _progressLoseTimer += Time.deltaTime;
+
+            if (_progressLoseTimer >= _progressLoseDelay)
             {
-                _currentPositionStatus--;
-                _currentLosePositionTime = 0;
-                _controller.UpdateGribBar(_currentPositionStatus);
+                if (_currentProgress > 0)
+                {
+                    _currentProgress--;
+                    _controller.UpdaetProgressBar(_currentProgress);
+
+                    AudioManager.instance.PlaySoundEffect("Squeak");
+                }
+
+                _progressLoseTimer = 0;
             }
         }
     }
 
-    private void ReduceProgress()
-    {
-        _currentLoseProgressTime += Time.deltaTime;
-
-        if (_currentLoseProgressTime >= _delayTime)
-        {
-            if (_currentProgress > 0)
-            {
-                _currentProgress--;
-                _currentLoseProgressTime = 0;
-                AudioManager.instance.PlaySoundEffect("Squeak");
-                _controller.UpdaetProgressBar(_currentProgress);
-            }
-
-            if (_currentLoseProgressTime >= _releaseGripTimer)
-                EndMiniGame();
-        }
-    }
+    // -------------------------
+    // START PHASE
+    // -------------------------
 
     public void StartPhase(bool isRight)
     {
@@ -108,16 +133,21 @@ public class HoldMouseManager : MiniGame
 
         GenerateGripZone();
 
-        float randomGrib = Random.Range(_minGrip/100, _maxGrip / 100);
-        _controller.ShowBar(isRight, randomGrib);
+        float zoneCenter = (_minGrip + _maxGrip) / 2f / 100f;
+
+        _controller.ShowBar(isRight, zoneCenter);
+
         SetCurrentWord();
     }
+
+    // -------------------------
+    // TYPING SYSTEM (UNCHANGED)
+    // -------------------------
 
     public override void CheckEnterLetter(string typingLetter)
     {
         if (_isPhase2Active)
         {
-            Debug.Log("[HoldMouseManager - CheckEnterLetter] Is Correct Letter : " + IsCorrectLetter(typingLetter));
             if (IsCorrectLetter(typingLetter))
             {
                 RemoveLetter();
@@ -128,7 +158,6 @@ public class HoldMouseManager : MiniGame
             else
                 ResetWord();
         }
-
     }
 
     private void SetCurrentWord()
@@ -141,7 +170,6 @@ public class HoldMouseManager : MiniGame
     private void SetRemainingWord(string wordLetter)
     {
         _remainingWord = wordLetter;
-        //UI
         _updateGripTextEventSO.OnRaise(wordLetter);
     }
 
@@ -163,19 +191,27 @@ public class HoldMouseManager : MiniGame
         if (_isPhase2Active)
         {
             _currentPositionStatus += 10;
+
+            _currentPositionStatus = Mathf.Clamp(_currentPositionStatus, 0f, 100f);
+
             _controller.UpdateGribBar(_currentPositionStatus);
+
             SetCurrentWord();
         }
     }
 
+    // -------------------------
+    // GRIP ZONE CHECK
+    // -------------------------
+
     private bool IsCanProgress()
     {
-        if (_currentPositionStatus >= _minGrip && _currentPositionStatus <= _maxGrip)
-        {
-            return true;
-        }
-        return false;
+        return _currentPositionStatus >= _minGrip && _currentPositionStatus <= _maxGrip;
     }
+
+    // -------------------------
+    // WORD SYSTEM
+    // -------------------------
 
     private void RemoveLetter()
     {
@@ -184,13 +220,21 @@ public class HoldMouseManager : MiniGame
         SetRemainingWord(remainingLetter);
     }
 
+    private void ResetWord()
+    {
+        _charIndex = 0;
+        SetRemainingWord(_currentWord);
+        ManagerTyping.instance.ResetTyping();
+    }
+
+    // -------------------------
+    // END GAME
+    // -------------------------
+
     private GameResult FindWinner()
     {
         if (_currentProgress >= _completedProgress)
             return GameResult.Win;
-
-        if (_currentProgress <= 0)
-            return GameResult.Loose;
 
         return GameResult.Loose;
     }
@@ -199,18 +243,10 @@ public class HoldMouseManager : MiniGame
     {
         _minGrip = Random.Range(0f, 100f - _gripZoneSize);
         _maxGrip = _minGrip + _gripZoneSize;
-
     }
 
     private void EndMiniGame()
     {
         MiniGameManager.instance.EndMiniGame(type, FindWinner());
-    }
-
-    private void ResetWord()
-    {
-        _charIndex = 0;
-        SetRemainingWord(_currentWord);
-        ManagerTyping.instance.ResetTyping();
     }
 }

@@ -868,8 +868,9 @@ MonoBehaviour:
   _currentMouse: {fileID: 7590757633751660585}
   StartWayPoint: {fileID: 0}
   EndWayPoint: {fileID: 0}
-  movementSpeed: 2
+  movementSpeed: 5
   _isResting: 0
+  isEnginePlaying: 0
 --- !u!50 &1503609893273997006
 Rigidbody2D:
   serializedVersion: 5
