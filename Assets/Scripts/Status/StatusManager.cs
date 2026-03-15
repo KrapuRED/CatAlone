@@ -5,15 +5,18 @@ public class StatusManager : MonoBehaviour
 {
     public static StatusManager instance;
 
-    [SerializeField] private float _statusHunger;
-    [SerializeField] private float _statusSocial;
-    [SerializeField] private float _statusHappines;
+    [SerializeField] private float _statusHunger = 50f;
+    [SerializeField] private float _statusSocial = 50f;
+    [SerializeField] private float _statusHappines = 50f;
 
     public float GetHunger() => _statusHunger;
     public float GetSocial() => _statusSocial;
     public float GetHappiness() => _statusHappines;
 
     [SerializeField] private UpdateStatusUIEventSO updateStatusUI;
+
+    private const float MAX_STATUS = 100f;
+    private const float MIN_STATUS = 0f;
 
     private void Awake()
     {
@@ -23,7 +26,9 @@ public class StatusManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
+        {
             Destroy(gameObject);
+        }
     }
 
     private void Start()
@@ -43,8 +48,11 @@ public class StatusManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
-            _statusHunger -= 1f;
+            yield return new WaitForSeconds(5f);
+
+            if (_statusHunger > 0)
+                _statusHunger -= 1f;
+
             RefreshUI();
         }
     }
@@ -53,8 +61,11 @@ public class StatusManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(18f);
-            _statusSocial -= 15f;
+            yield return new WaitForSeconds(30f);
+
+            if (_statusSocial > 0)
+                _statusSocial -= 10f;
+
             RefreshUI();
         }
     }
@@ -63,12 +74,17 @@ public class StatusManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(12f);
-            _statusHappines -= 18f;
+            yield return new WaitForSeconds(20f);
+
+            if (_statusHappines > 0)
+                _statusHappines -= 5f;
+
             RefreshUI();
         }
     }
 
+    // -------------------------
+    // MINIGAME REWARD
     // -------------------------
 
     public void ChangeStatusPoint(MiniGameType type, float status)
@@ -91,9 +107,18 @@ public class StatusManager : MonoBehaviour
         RefreshUI();
     }
 
+    // -------------------------
+    // UI UPDATE
+    // -------------------------
+
     public void RefreshUI()
     {
+        _statusHunger = Mathf.Clamp(_statusHunger, MIN_STATUS, MAX_STATUS);
+        _statusSocial = Mathf.Clamp(_statusSocial, MIN_STATUS, MAX_STATUS);
+        _statusHappines = Mathf.Clamp(_statusHappines, MIN_STATUS, MAX_STATUS);
+
         updateStatusUI.OnRaise(_statusHunger, _statusSocial, _statusHappines);
-        Debug.Log($"[StatusManager] Hunger: {_statusHunger} Social: {_statusSocial} Happiness: {_statusHappines}");
+
+        Debug.Log($"[StatusManager] Hunger: {_statusHunger} | Social: {_statusSocial} | Happiness: {_statusHappines}");
     }
 }
