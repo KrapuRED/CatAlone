@@ -47,7 +47,7 @@ MonoBehaviour:
   timerUI: {fileID: 0}
   _isMiniGameActive: 0
   _isTutorialDone: 0
-  _durationGame: 160
+  _durationGame: 90
   _currentGameDuration: 0
   updateTutorial: {fileID: 11400000, guid: d67b66a1cfd9d0d4b96dd19f7bbd52a3, type: 2}
   updateTimerUI: {fileID: 11400000, guid: c54eb06ba2abdc84cb79e67c663a8452, type: 2}
