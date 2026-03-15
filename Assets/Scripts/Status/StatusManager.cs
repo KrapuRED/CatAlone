@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class StatusManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class StatusManager : MonoBehaviour
     public float GetHappiness() => _statusHappines;
 
     [SerializeField] private UpdateStatusUIEventSO updateStatusUI;
+
     private void Awake()
     {
         if (instance == null)
@@ -27,7 +29,47 @@ public class StatusManager : MonoBehaviour
     private void Start()
     {
         RefreshUI();
+
+        StartCoroutine(HungerDeplete());
+        StartCoroutine(SocialDeplete());
+        StartCoroutine(HappinessDeplete());
     }
+
+    // -------------------------
+    // STAT DEPLETION
+    // -------------------------
+
+    IEnumerator HungerDeplete()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            _statusHunger -= 1f;
+            RefreshUI();
+        }
+    }
+
+    IEnumerator SocialDeplete()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(18f);
+            _statusSocial -= 15f;
+            RefreshUI();
+        }
+    }
+
+    IEnumerator HappinessDeplete()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(12f);
+            _statusHappines -= 18f;
+            RefreshUI();
+        }
+    }
+
+    // -------------------------
 
     public void ChangeStatusPoint(MiniGameType type, float status)
     {
@@ -40,10 +82,12 @@ public class StatusManager : MonoBehaviour
             case MiniGameType.Feeding:
                 _statusHunger += status;
                 break;
+
             case MiniGameType.CatToy:
                 _statusHappines += status;
                 break;
         }
+
         RefreshUI();
     }
 
@@ -51,6 +95,5 @@ public class StatusManager : MonoBehaviour
     {
         updateStatusUI.OnRaise(_statusHunger, _statusSocial, _statusHappines);
         Debug.Log($"[StatusManager] Hunger: {_statusHunger} Social: {_statusSocial} Happiness: {_statusHappines}");
-
     }
 }

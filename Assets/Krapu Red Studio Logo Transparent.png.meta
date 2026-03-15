@@ -184,328 +184,20 @@ TextureImporter:
       name: Krapu Red Studio Logo Transparent_0
       rect:
         serializedVersion: 2
-        x: 265
-        y: 473
-        width: 468
-        height: 283
+        x: 0
+        y: 0
+        width: 1000
+        height: 1000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 73992275087556710800000000000000
+      spriteID: 08be7e9ef945d0246828f628b9fdb8de
       internalID: 1685849844249434423
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_1
-      rect:
-        serializedVersion: 2
-        x: 237
-        y: 318
-        width: 79
-        height: 142
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9b9e410db3a7dddc0800000000000000
-      internalID: -3612596928768579143
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_2
-      rect:
-        serializedVersion: 2
-        x: 319
-        y: 318
-        width: 57
-        height: 124
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fb905c4eef35a0890800000000000000
-      internalID: -7491082675952481857
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_3
-      rect:
-        serializedVersion: 2
-        x: 378
-        y: 318
-        width: 67
-        height: 124
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c5b99d6463333e7a0800000000000000
-      internalID: -6349174741452350628
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_4
-      rect:
-        serializedVersion: 2
-        x: 446
-        y: 318
-        width: 41
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 56aedb82eb53c85a0800000000000000
-      internalID: -6517775469868357019
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_5
-      rect:
-        serializedVersion: 2
-        x: 491
-        y: 318
-        width: 50
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e9620e8c9e1968570800000000000000
-      internalID: 8468616582600337054
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_6
-      rect:
-        serializedVersion: 2
-        x: 563
-        y: 318
-        width: 65
-        height: 138
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8e6d7167e4d77df50800000000000000
-      internalID: 6906126329538139880
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_7
-      rect:
-        serializedVersion: 2
-        x: 628
-        y: 318
-        width: 66
-        height: 138
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a6988eb32b3a3f1b0800000000000000
-      internalID: -5623971523751016086
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_8
-      rect:
-        serializedVersion: 2
-        x: 700
-        y: 318
-        width: 63
-        height: 138
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 422fee412c7443970800000000000000
-      internalID: 8733684476278665764
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_9
-      rect:
-        serializedVersion: 2
-        x: 244
-        y: 255
-        width: 27
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 00306fefc1d793e50800000000000000
-      internalID: 6789595476727825152
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_10
-      rect:
-        serializedVersion: 2
-        x: 341
-        y: 255
-        width: 28
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9bf64e853e6d6c640800000000000000
-      internalID: 5099999899980951481
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_11
-      rect:
-        serializedVersion: 2
-        x: 439
-        y: 255
-        width: 27
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 556d2cd95260573e0800000000000000
-      internalID: -2056730896194415019
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_12
-      rect:
-        serializedVersion: 2
-        x: 536
-        y: 255
-        width: 27
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c9a9cf57d6e5bdc90800000000000000
-      internalID: -7144012559669224804
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_13
-      rect:
-        serializedVersion: 2
-        x: 633
-        y: 255
-        width: 28
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fed8229f613a10200800000000000000
-      internalID: 144575982116965871
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Krapu Red Studio Logo Transparent_14
-      rect:
-        serializedVersion: 2
-        x: 731
-        y: 255
-        width: 27
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ba6295b7c66a940b0800000000000000
-      internalID: -5743876864878238037
       vertices: []
       indices: 
       edges: []
@@ -514,7 +206,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 91a52cf8aa798434794506e400bdba80
     internalID: 0
     vertices: []
     indices: 
@@ -531,6 +223,7 @@ TextureImporter:
       Krapu Red Studio Logo Transparent_12: -7144012559669224804
       Krapu Red Studio Logo Transparent_13: 144575982116965871
       Krapu Red Studio Logo Transparent_14: -5743876864878238037
+      Krapu Red Studio Logo Transparent_15: -1634470480
       Krapu Red Studio Logo Transparent_2: -7491082675952481857
       Krapu Red Studio Logo Transparent_3: -6349174741452350628
       Krapu Red Studio Logo Transparent_4: -6517775469868357019

@@ -11,7 +11,7 @@ public class Panel : MonoBehaviour
         switch (miniGameType)
         {
             case MiniGameType.CatToy:
-                rewardUI.text = $"gain {rewardValue.ToString()} Hunger";
+                rewardUI.text = $"gain {rewardValue.ToString()} Fun";
                 break;
 
             case MiniGameType.BattleMeow:

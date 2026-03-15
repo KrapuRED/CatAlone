@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public enum StatusScore
 {
@@ -78,4 +79,11 @@ public class PanelEnding : MonoBehaviour
 
         return string.Empty;
     }
+
+
+public void CloseEnding()
+{
+    SceneManager.LoadScene("MainMenu");
+}
+
 }
