@@ -1745,18 +1745,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  _gripZoneSize: 50
+  _gripZoneSize: 25
   _maxGrip: 0
   _minGrip: 0
   _currentPositionStatus: 0
-  _currentLosePositionTime: 0
+  _gripDepleteTimer: 0
+  _gripDepleteDelay: 0.5
   _releaseGripTimer: 20
   _completedProgress: 100
   _gainProgressen: 8
   _currentProgress: 0
-  _delayTime: 1
-  _currentGainTime: 0
-  _currentLoseProgressTime: 0
+  _progressGainTimer: 0
+  _progressLoseTimer: 0
+  _progressGainDelay: 1
+  _progressLoseDelay: 1
   _wordBank: {fileID: 523941413}
   _currentWord: 
   _remainingWord: 
@@ -2303,7 +2305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  _limitTimer: 120
+  _limitTimer: 30
   _activeMouseWords: []
   _currentWord: 
   _remainingWord: 
@@ -3037,6 +3039,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5456388825716528052, guid: 21bc53915c4186a4988eec3d0a120ab6, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456388825716528052, guid: 21bc53915c4186a4988eec3d0a120ab6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456388825716528052, guid: 21bc53915c4186a4988eec3d0a120ab6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456388825716528052, guid: 21bc53915c4186a4988eec3d0a120ab6, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6547167150940852358, guid: 21bc53915c4186a4988eec3d0a120ab6, type: 3}
@@ -3806,6 +3820,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5456388825716528052, guid: 21bc53915c4186a4988eec3d0a120ab6, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456388825716528052, guid: 21bc53915c4186a4988eec3d0a120ab6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456388825716528052, guid: 21bc53915c4186a4988eec3d0a120ab6, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6547167150940852358, guid: 21bc53915c4186a4988eec3d0a120ab6, type: 3}
